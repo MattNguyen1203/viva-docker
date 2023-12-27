@@ -57,7 +57,7 @@ function Information({ data, lang, dataBookTour, dictionary }) {
               width={400}
               height={400}
               className='object-cover md:w-full md:h-[33.81563vw]'
-              quality={100}
+              quality={85}
             />
           </div>
         </div>

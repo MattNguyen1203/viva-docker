@@ -24,10 +24,8 @@ async function Banner({ data, lang, dataFilter }) {
             dataFilter={dataFilter}
           />
         </div>
-        <div
-          className='relative flex flex-col gap-[0.94vw] text-center items-center cursor-pointer justify-center md:mt-[2.19vw] mt-[4.8vw]'
-        >
-          <ScrollDown block="home-wrapper" />
+        <div className='relative flex flex-col gap-[0.94vw] text-center items-center cursor-pointer justify-center md:mt-[2.19vw] mt-[4.8vw]'>
+          <ScrollDown block='home-wrapper' />
           <svg
             xmlns='http://www.w3.org/2000/svg'
             className='arrow-down md:w-[1.375vw] md:h-[1.35vw] w-[3.2vw] h-[3.2vw]'
@@ -45,7 +43,10 @@ async function Banner({ data, lang, dataFilter }) {
               strokeWidth='2'
             />
           </svg>
-          <span className='md:block hidden text-center font-manrope text-[0.875vw] not-italic font-semibold tracking-[0.04375vw] uppercase text-[#fff] relative z-[99]' style={{ textShadow: '1px 1px 2px #000, 0 0 1em #000, 0 0 0.2em #000' }}>
+          <span
+            className='md:block hidden text-center font-manrope text-[0.875vw] not-italic font-semibold tracking-[0.04375vw] uppercase text-[#fff] relative z-[99]'
+            style={{ textShadow: '1px 1px 2px #000, 0 0 1em #000, 0 0 0.2em #000' }}
+          >
             {dictionary.home.banner_explore}
           </span>
         </div>
@@ -54,6 +55,7 @@ async function Banner({ data, lang, dataFilter }) {
         src={data?.background?.sourceUrl || banner}
         width={1600}
         height={1000}
+        quality={85}
         alt={data?.background?.altText || data?.background?.title || 'banner'}
         priority
         className='absolute inset-0 object-cover w-full h-full bg-blend-multiply'

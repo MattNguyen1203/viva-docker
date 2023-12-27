@@ -221,7 +221,7 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
           <Image
             alt='background'
             src={bgPc}
-            quality={100}
+            quality={85}
             priority
             className='absolute top-0 left-0 w-full h-full'
           />

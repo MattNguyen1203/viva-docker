@@ -76,6 +76,7 @@ function SlideRepresent({ data }) {
                   src={item?.img?.sourceUrl}
                   width={500}
                   height={500}
+                  quality={85}
                   alt={item?.img?.altText || item?.img?.altText || 'thumb'}
                   className='w-full h-[54.4vw] md:h-[29.14588vw] block object-cover rounded-[1.6vw] presentative-img'
                 />

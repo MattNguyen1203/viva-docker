@@ -42,6 +42,8 @@ export default function TourDetail({
           <Image
             src={tour}
             alt='tour'
+            quality={85}
+            fill
             className='absolute top-0 left-0 w-full h-[150vw] opacity-5 z-0'
           />
           <div

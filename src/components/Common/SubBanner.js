@@ -15,6 +15,7 @@ export default function SubBanner({ data = {}, className, lang }) {
     <section className='md:w-[83.81vw] w-full md:m-auto rounded-[10px] relative md:px-[4.375vw] px-0 md:pt-[7.9375vw] pt-0 md:pb-[13.25vw] pb-0 md:shadow-[0_0_2.5vw_0_rgba(0,0,0,0.08)]'>
       <Image
         src={subBannerBg}
+        quality={85}
         alt='subBannerBg'
         className='w-full h-full absolute top-0 left-0 z-0 md:rounded-[10px]'
       />
@@ -52,6 +53,7 @@ export default function SubBanner({ data = {}, className, lang }) {
       <Image
         src={subBannerBg3}
         alt='subBannerBg3'
+        quality={85}
         className='md:w-[56.73%] w-full md:h-[83.28%] h-[64vw] object-cover md:absolute relative bottom-0 right-0 z-10 md:rounded-[10px]'
       />
     </section>

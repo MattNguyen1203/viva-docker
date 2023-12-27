@@ -24,6 +24,7 @@ function TravelStyleItem({ data, lang }) {
         src={data?.banner?.travelStyleInfo?.imageHomePage?.sourceUrl}
         width={500}
         height={500}
+        quality={85}
         alt={data?.banner?.travelStyleInfo?.image?.imageHomePage?.altText || 'travel style'}
         className='h-[30.0625vw] w-full object-cover rounded-[1vw]'
       />

@@ -28,6 +28,7 @@ export default function Listimg({ data, video }) {
               alt={item?.altText}
               width={1000}
               height={1000}
+              quality={85}
               className='md:w-[46%] md:h-[20vw] w-full h-full object-cover rounded-lg'
             />
           ))}

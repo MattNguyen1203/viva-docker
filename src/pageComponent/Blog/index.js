@@ -34,7 +34,7 @@ function BlogPage({ dataBestSeller, lang, initTopic, initCategories, allCountrie
       initDesName = des?.name
     }
 
-    if (destinationPathname === "" || !destinationPathname) {
+    if (destinationPathname === '' || !destinationPathname) {
       arrayDesInit.push(des?.slug)
     } else if (des?.slug !== destinationPathname) {
       arrayDesOfSellerInit.push(des?.slug)
@@ -64,15 +64,14 @@ function BlogPage({ dataBestSeller, lang, initTopic, initCategories, allCountrie
     }
   })
 
-  const dataBestTour = useQuery(GET_BEST_TOUR_BLOG_BY_COUNTRY,
-    {
-      variables: {
-        language: language,
-        countrySlug: destination === '' ? [] : destination
-      }
-    })
+  const dataBestTour = useQuery(GET_BEST_TOUR_BLOG_BY_COUNTRY, {
+    variables: {
+      language: language,
+      countrySlug: destination === '' ? [] : destination
+    }
+  })
 
-  const listBestTour = dataBestTour?.data?.allTours?.nodes;
+  const listBestTour = dataBestTour?.data?.allTours?.nodes
   const eleRef = useRef()
 
   useEffect(() => {
@@ -112,30 +111,42 @@ function BlogPage({ dataBestSeller, lang, initTopic, initCategories, allCountrie
       </div>
 
       <div className='relative md:pb-[2vw]'>
-        <Image alt='banner' src={background} fill quality={100} className='z-[-1] object-cover' />
+        <Image
+          alt='banner'
+          src={background}
+          fill
+          quality={85}
+          className='z-[-1] object-cover'
+        />
         {!loading ? (
           <div>
-            {pageInfo !== 0 ? <div className='grid md:grid-cols-4 md:px-[8.06vw] px-[4.27vw] grid-cols-2 md:gap-x-[2.5vw] md:gap-y-[3vw] gap-x-[4.27vw] gap-y-[6.4vw] md:mt-[4vw] mt-[7.73vw]'>
-              {allBlogData?.map((item, index) => (
-                <BlogItem
-                  lang={lang}
-                  key={index}
-                  data={item?.translation}
-                  className={'max-md:w-[43.73333vw] max-md:h-[43.73333vw] !ml-0'}
-                />
-              ))}
-            </div> : <div className='text-center text-[3.5vw] w-full font-optima pt-[4vw] max-md:text-[5.67vw]'>{dictionary?.home?.no_data}</div>}
-
+            {pageInfo !== 0 ? (
+              <div className='grid md:grid-cols-4 md:px-[8.06vw] px-[4.27vw] grid-cols-2 md:gap-x-[2.5vw] md:gap-y-[3vw] gap-x-[4.27vw] gap-y-[6.4vw] md:mt-[4vw] mt-[7.73vw]'>
+                {allBlogData?.map((item, index) => (
+                  <BlogItem
+                    lang={lang}
+                    key={index}
+                    data={item?.translation}
+                    className={'max-md:w-[43.73333vw] max-md:h-[43.73333vw] !ml-0'}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className='text-center text-[3.5vw] w-full font-optima pt-[4vw] max-md:text-[5.67vw]'>
+                {dictionary?.home?.no_data}
+              </div>
+            )}
 
             <div className='flex md:gap-[0.75vw] gap-[3.2vw] justify-center items-center relative md:mt-[4.5vw] mt-[8.53vw]'>
               {Array.from({ length: totalPage }, (_, index) => (
                 <div
                   key={index}
                   onClick={() => handleChangePage(index)}
-                  className={`${totalPage > 1
-                    ? 'cursor-pointer md:w-[2.125vw] md:h-[2.125vw] w-[9.07vw] h-[9.07vw] rounded-[50%] flex justify-center items-center bg-primaryColor'
-                    : 'hidden'
-                    }  ${activePage === index ? 'bg-textColor  opacity-[1]' : ' opacity-[0.1]'}`}
+                  className={`${
+                    totalPage > 1
+                      ? 'cursor-pointer md:w-[2.125vw] md:h-[2.125vw] w-[9.07vw] h-[9.07vw] rounded-[50%] flex justify-center items-center bg-primaryColor'
+                      : 'hidden'
+                  }  ${activePage === index ? 'bg-textColor  opacity-[1]' : ' opacity-[0.1]'}`}
                 >
                   <span className={`${activePage === index ? 'text-white' : 'text-textColor'}`}>{index + 1}</span>
                 </div>
@@ -150,20 +161,30 @@ function BlogPage({ dataBestSeller, lang, initTopic, initCategories, allCountrie
 
         {/* besst seller tour */}
         {dataBestSeller?.data?.page?.translation?.ourblog ? (
-          (listBestTour && listBestTour?.length !== 0) &&
-          <div>
-            <h2 className='heading-1 md:mt-[5.25vw] mt-[12.8vw] md:pl-[8.06vw] pl-[4.27vw] mb-[3.5vw]'>
-              {dataBestSeller?.data?.page?.translation?.ourblog?.heading2}
-            </h2>
-            <div className='md:px-[8.06vw]'>
-              <SlideTour data={listBestTour} lang={lang} />
+          listBestTour &&
+          listBestTour?.length !== 0 && (
+            <div>
+              <h2 className='heading-1 md:mt-[5.25vw] mt-[12.8vw] md:pl-[8.06vw] pl-[4.27vw] mb-[3.5vw]'>
+                {dataBestSeller?.data?.page?.translation?.ourblog?.heading2}
+              </h2>
+              <div className='md:px-[8.06vw]'>
+                <SlideTour
+                  data={listBestTour}
+                  lang={lang}
+                />
+              </div>
+              <Link
+                href={`${lang !== 'en' ? `/${lang}` : ''}/search?seller=best-seller-tours&country=${destinationName}`}
+              >
+                <Button
+                  content={dataBestSeller?.data?.page?.translation?.ourblog?.button}
+                  className='btn-secondary m-auto md:mb-[6.25vw] mb-[6.25vw] md:mt-[3.5vw] relative mt-[10.01vw] '
+                >
+                  <span>{dataBestSeller?.data?.page?.translation?.ourblog?.button}</span>
+                </Button>
+              </Link>
             </div>
-            <Link href={`${lang !== 'en' ? `/${lang}` : ''}/search?seller=best-seller-tours&country=${destinationName}`}>
-              <Button content={dataBestSeller?.data?.page?.translation?.ourblog?.button} className='btn-secondary m-auto md:mb-[6.25vw] mb-[6.25vw] md:mt-[3.5vw] relative mt-[10.01vw] '>
-                <span>{dataBestSeller?.data?.page?.translation?.ourblog?.button}</span>
-              </Button>
-            </Link>
-          </div>
+          )
         ) : (
           <div className='flex items-center justify-center flex-1 w-full text-center h-[60vh]'>
             <Loading />

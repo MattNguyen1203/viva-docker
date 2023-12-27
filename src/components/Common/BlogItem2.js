@@ -21,6 +21,7 @@ function BlogItem2({ className, data, lang, isHomePage }) {
             src={data?.featuredImage?.node?.sourceUrl || imgTour}
             width={1000}
             height={1000}
+            quality={85}
             alt={data?.featuredImage?.node?.altText || 'img blog'}
             className='md:h-[19.0625vw] h-[81.33333vw] md:w-full w-[74.93333vw] object-cover md:rounded-[1vw] rounded-[2.13333vw] img-blog_2'
           />
@@ -36,6 +37,7 @@ function BlogItem2({ className, data, lang, isHomePage }) {
               src={calendarY}
               width={300}
               height={300}
+              quality={85}
               alt='calendar'
               className='max-lg:scale-150 w-[0.84375vw] max-md:w-[2.26667vw] md:h-[0.9375vw] max-md:h-[2.26667vw] object-cover'
             />

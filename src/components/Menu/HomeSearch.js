@@ -13,6 +13,7 @@ function HomeSearch({onClose,lang}) {
           src={logo}
           width={100}
           height={100}
+          quality={90}
           alt='viva-travel'
           className='w-[10.4vw] object-cover'
         />

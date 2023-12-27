@@ -46,6 +46,7 @@ function TourItem({ data, menu, lang, loading, className, onCloseMenu }) {
             width={364}
             height={471}
             priority
+            quality={85}
             alt={tourData?.gallery?.[0]?.altText || tourData?.gallery?.[0]?.title || 'thumb tour'}
             className='h-full object-cover w-full md:rounded-[1vw] rounded-[2.75vw] img-tour'
           />

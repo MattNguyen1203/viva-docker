@@ -13,7 +13,7 @@ export default function NotFound({ lang }) {
         alt='not found'
         width={1000}
         height={1000}
-        quality={100}
+        quality={85}
         className='absolute top-0 left-0 z-20 object-cover w-full h-full'
       />
 

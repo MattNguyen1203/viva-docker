@@ -35,6 +35,7 @@ export default function PriceMb({ data, onClick }) {
             alt={data?.map?.altText}
             width={1000}
             height={1000}
+            quality={85}
             className='object-contain w-full h-full rounded-lg'
           />
         </ModalCustom>

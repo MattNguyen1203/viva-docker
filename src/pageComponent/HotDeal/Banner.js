@@ -29,6 +29,7 @@ const Banner = ({ data = {}, isReview }) => {
         <Image
           src={data?.gallery?.length > 0 && data?.gallery[0]?.sourceUrl}
           alt={data?.gallery?.length > 0 && data?.gallery[0]?.altText}
+          quality={85}
           width={1000}
           height={1000}
           className={`w-full h-full col-span-2 row-span-2 min-w-[19.02625vw] min-h-[16.5vw] object-cover cursor-pointer rounded-lg`}
@@ -48,6 +49,7 @@ const Banner = ({ data = {}, isReview }) => {
                 alt={img?.altText}
                 width={1000}
                 height={1000}
+                quality={85}
                 className='w-full h-full cursor-pointer'
               />
               <div
@@ -80,6 +82,7 @@ const Banner = ({ data = {}, isReview }) => {
               key={index}
               width={1000}
               height={1000}
+              quality={85}
               className={`min-w-[19.02625vw] min-h-[16.5vw] h-full w-full object-cover cursor-pointer rounded-lg`}
             />
           )

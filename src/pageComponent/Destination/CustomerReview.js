@@ -31,6 +31,8 @@ async function CustomerReview({lang, slug }) {
       <Image
         alt='bannerReview'
         src={bannerReview}
+        quality={85}
+        fill
         className='z-[-1] object-cover top-[-40%] absolute hidden md:block w-full'
       />
       <div className="flex flex-col md:!mt-[7.06vw] !mt-[14.93vw] content">

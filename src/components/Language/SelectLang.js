@@ -74,6 +74,7 @@ function SelectLang({ lang }) {
                     width={50}
                     height={50}
                     alt='img'
+                    quality={85}
                     className='w-[30px] object-cover rounded-[0.1875vw]'
                   />
                   <span className='uppercase text-[0.875vw] max-lg:text-[3.2vw]'>{locale.locale}</span>

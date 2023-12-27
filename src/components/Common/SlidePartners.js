@@ -40,6 +40,7 @@ function SlidePartners({ data: slidePartners, reverse }) {
                 width={500}
                 height={500}
                 alt='partners'
+                quality={85}
                 className={`object-contain w-[13vw] h-[10.2vw] max-md:w-[26.33vw] max-md:h-[14.69vw] ${reverse ? 'max-md:-scale-125 -scale-90' : 'max-md:scale-125 scale-90'
                   }`}
               />

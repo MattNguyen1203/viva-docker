@@ -9,6 +9,7 @@ function ServiceItem({ data, lang, onCloseMenu }) {
             src={data?.recommendservice?.recommendservice?.image?.sourceUrl}
             width={500}
             height={500}
+            quality={85}
             alt='img'
             className='object-cover w-full h-full rounded-[1vw]'
           />

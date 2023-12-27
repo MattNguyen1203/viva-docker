@@ -15,6 +15,7 @@ function DestinationItem({ tour, lang, onCloseMenu }) {
           src={tour?.country?.thumb?.sourceUrl}
           width={1000}
           height={1000}
+          quality={85}
           alt='img'
           className='object-cover  w-full h-full rounded-[0.625vw]'
         />
@@ -28,6 +29,7 @@ function DestinationItem({ tour, lang, onCloseMenu }) {
             src={tour?.country?.flag?.sourceUrl}
             width={100}
             height={100}
+            quality={85}
             alt='img'
             className='w-[2vw] h-[2vw] rounded-full object-cover'
           />

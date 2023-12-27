@@ -15,6 +15,7 @@ export default function Banner({ data = {} }) {
         alt={data?.backgroundImage?.altText || 'Who We Are'}
         width={1600}
         height={1000}
+        quality={85}
         className='w-full h-[74.4vw] md:h-[100vh] object-cover'
       />
       <div className='about-banner-mask w-full md:h-[12.4375vw] h-[7.2vw] absolute bottom-0 right-0'></div>

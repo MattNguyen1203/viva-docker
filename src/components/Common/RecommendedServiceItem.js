@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import moment from 'moment'
 
-function RecommendedServiceItem({ className, data, lang, heightImage,category }) {
+function RecommendedServiceItem({ className, data, lang, heightImage, category }) {
   return (
     <Link
       href={`/${lang}/recommended-services/${category}/${data?.translation?.slug || data?.slug}`}
@@ -12,9 +12,10 @@ function RecommendedServiceItem({ className, data, lang, heightImage,category })
       <div className={`w-full`}>
         <div className='relative image'>
           <Image
-            src={data?.featuredImage?.node?.sourceUrl || data?.translation?.featuredImage?.node?.sourceUrl || 'https://res.cloudinary.com/asiavivatravel/images/w_2560,h_1708,c_scale/v1699806445/cover_02/cover_02.jpg?_i=AA'}
+            src={data?.featuredImage?.node?.sourceUrl || data?.translation?.featuredImage?.node?.sourceUrl}
             width={1000}
             height={1000}
+            quality={85}
             alt={data?.featuredImage?.node?.altText || data?.translation?.featuredImage?.node?.altText || 'img blog'}
             className={`md:!h-[16.3125vw] h-[52.26667vw] object-cover md:rounded-[0.5vw] rounded-[2.13333vw] ${className} ${heightImage}`}
           />

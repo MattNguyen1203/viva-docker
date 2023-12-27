@@ -25,6 +25,7 @@ export default async function IndexAboutUs({ res, lang, arrYear, arrCountry }) {
             alt='step bg'
             width={1000}
             height={1000}
+            quality={85}
             className='md:block hidden absolute bottom-0 left-0 md:w-full w-[200vw] h-[80vw] z-0'
           />
         </div>

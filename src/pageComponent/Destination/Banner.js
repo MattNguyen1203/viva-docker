@@ -42,6 +42,7 @@ const Banner = async ({ slug, lang }) => {
           src={data?.img?.sourceUrl}
           width={1500}
           height={1000}
+          quality={85}
           alt={data?.img?.altText || 'img-destination'}
           className='absolute inset-0 object-cover w-full h-full z-[-1]'
         />

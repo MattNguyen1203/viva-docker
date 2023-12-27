@@ -3,12 +3,13 @@ import responsibleBg from '@/assets/images/about/responsibleBg.png'
 import Image from 'next/image'
 
 export default function Responsible({ data = {} }) {
-
   return (
     <section className='relative pb-[7.5vw] rounded-2xl md:rounded-none mt-[-7.2vw] bg-white z-10 md:mt-0'>
       <Image
         src={responsibleBg}
         alt='Responsible Travel'
+        quality={85}
+        fill
         className='absolute top-0 left-0 w-full h-full z-[-1]'
       />
 
@@ -66,10 +67,11 @@ export default function Responsible({ data = {} }) {
                   </p>
                 </main>
                 <Image
-                  src={post?.image?.sourceUrl || 'https://res.cloudinary.com/asiavivatravel/images/v1699670076/Baia-di-Halong/Baia-di-Halong.jpg?_i=AA'}
+                  src={post?.image?.sourceUrl}
                   alt={post?.image?.altText || 'post img'}
                   width={1000}
                   height={1000}
+                  quality={85}
                   className='md:w-[35.93vw] w-full md:h-[35.93vw] h-[91.47vw] object-cover'
                   data-aos-once='true'
                   data-aos-duration='1000'

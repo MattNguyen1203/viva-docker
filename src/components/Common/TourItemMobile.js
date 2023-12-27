@@ -18,13 +18,13 @@ function TourItemMobile({ data, lang, loading }) {
   const pathName = usePathname()
   const isPromotion = pathName.includes('hot-deals')
   let bestTour = false
-  if(checkBestTour?.length > 0) {
+  if (checkBestTour?.length > 0) {
     bestTour = true
   }
   let tag = 'Best Seller'
   let priceTour = '$'
 
-  if(lang === 'fr') {
+  if (lang === 'fr') {
     tag = 'Best Seller'
     priceTour = '€'
   }
@@ -47,11 +47,18 @@ function TourItemMobile({ data, lang, loading }) {
                   ? tourData?.gallery[0]?.sourceUrl
                   : 'https://viva-cms-en.okhub.tech/wp-content/uploads/2023/10/Tourists-in-Angkor-Wat-01-scaled.jpg'
               }
+              quality={85}
               width={300}
               height={300}
               className='h-[100%] w-[100%] object-cover rounded-[1.067vw]'
             />
-            {bestTour ? <span className='absolute top-3 left-3 tag-best_tour text-[2.667vw] w-max px-2 py-1 text-[#2b2b2b] bg-primaryColor block'>{tag}</span> : ""}
+            {bestTour ? (
+              <span className='absolute top-3 left-3 tag-best_tour text-[2.667vw] w-max px-2 py-1 text-[#2b2b2b] bg-primaryColor block'>
+                {tag}
+              </span>
+            ) : (
+              ''
+            )}
           </div>
         ) : (
           <Skeleton

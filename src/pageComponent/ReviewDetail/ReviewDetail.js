@@ -81,6 +81,8 @@ function ReviewDetail({ data, lang, dataTour }) {
         <Image
           src={tour}
           alt='tour'
+          quality={85}
+          fill
           className='absolute top-0 left-0 z-0 w-full h-full opacity-5'
         />
         <div

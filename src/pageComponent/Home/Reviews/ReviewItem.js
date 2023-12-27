@@ -18,10 +18,11 @@ function ReviewItem({ data, lang }) {
       className='block relative h-[31.9375vw] rounded-[1vw] max-md:rounded-[3.2vw] max-md:h-[104.8vw] max-md:ml-[4vw] customer-review__item'
     >
       <Image
-        src={tourData?.banner?.gallery?.[0]?.sourceUrl || 'https://res.cloudinary.com/asiavivatravel/images/v1699582207/La-cascata-grande-Khone-Phapheng-laos/La-cascata-grande-Khone-Phapheng-laos.jpg?_i=AA'}
+        src={tourData?.banner?.gallery?.[0]?.sourceUrl}
         alt={tourData?.banner?.gallery?.[0]?.altText || 'thumb review'}
         width={500}
         height={500}
+        quality={85}
         className='rounded-[1vw] w-full h-full object-cover max-md:rounded-[3.2vw] customer-review__img'
       />
       <div className='top absolute top-0 pt-[1.5vw] pl-[1.5vw] pr-[2.38vw] z-10 max-md:pt-[4.8vw] max-md:pl-[4.92vw] max-md:pr-[7.88vw]'>
@@ -61,7 +62,7 @@ function ReviewItem({ data, lang }) {
         <div className='flex items-center gap-[0.75vw] max-md:gap-[2.5vw]'>
           <div className='border-[2px] border-white border-solid w-[3.5vw] h-[3.5vw] max-md:w-[11.46vw] max-md:h-[11.46vw] rounded-full'>
             <Image
-              src={authorInfo?.thumbnail?.sourceUrl || 'https://res.cloudinary.com/asiavivatravel/images/v1699582207/La-cascata-grande-Khone-Phapheng-laos/La-cascata-grande-Khone-Phapheng-laos.jpg?_i=AA'}
+              src={authorInfo?.thumbnail?.sourceUrl}
               width={100}
               height={100}
               alt={authorInfo?.thumbnail?.altText || 'avatar'}

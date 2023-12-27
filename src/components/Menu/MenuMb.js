@@ -55,12 +55,22 @@ function MenuMb({
       <div className='flex items-center justify-center h-[14.93vw] border-b border-solid border-textColor border-opacity-20'>
         <div className='flex items-center content'>
           <Link href={`/`}>
-            <Image src={logo} width={100} height={100} alt='viva-travel' className='w-[10.4vw] object-cover' />
+            <Image
+              src={logo}
+              width={100}
+              height={100}
+              quality={85}
+              alt='viva-travel'
+              className='w-[10.4vw] object-cover'
+            />
           </Link>
           <div className='flex-1 hidden max-lg:block'>
             <InputSearchMb lang={lang} />
           </div>
-          <div className='cursor-pointer close' onClick={onCloseMenu}>
+          <div
+            className='cursor-pointer close'
+            onClick={onCloseMenu}
+          >
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='26'
@@ -69,13 +79,30 @@ function MenuMb({
               fill='none'
               className='w-[6.93vw] h-[6.93vw] object-cover'
             >
-              <line x1='20.0581' y1='7.17899' x2='7.04918' y2='20.188' stroke='#000' strokeWidth='1.2265' />
-              <line x1='19.1909' y1='20.0576' x2='6.18192' y2='7.04863' stroke='#000' strokeWidth='1.2265' />
+              <line
+                x1='20.0581'
+                y1='7.17899'
+                x2='7.04918'
+                y2='20.188'
+                stroke='#000'
+                strokeWidth='1.2265'
+              />
+              <line
+                x1='19.1909'
+                y1='20.0576'
+                x2='6.18192'
+                y2='7.04863'
+                stroke='#000'
+                strokeWidth='1.2265'
+              />
             </svg>
           </div>
         </div>
       </div>
-      <div className='mt-[8.53vw] content' style={{ paddingTop: '4.27vw' }}>
+      <div
+        className='mt-[8.53vw] content'
+        style={{ paddingTop: '4.27vw' }}
+      >
         {/* Item 1 */}
         <div className='border-b border-solid row-menu border-textColor border-opacity-20'>
           <div
@@ -83,7 +110,13 @@ function MenuMb({
             onClick={() => handleSelect(1)}
           >
             <h3 className='text-[5.33vw] leading-[1.2] capitalize opacity-60'>{dataHome?.nav1}</h3>
-            <Image src={iconDropdown} width={11} height={8} alt='img' className='drop-down max-lg:w-[3vw]' />
+            <Image
+              src={iconDropdown}
+              width={11}
+              height={8}
+              alt='img'
+              className='drop-down max-lg:w-[3vw]'
+            />
           </div>
           <div
             className='list menu-mb_item flex items-center gap-[7.47vw] !overflow-x-auto mt-[3.73vw] '
@@ -91,9 +124,9 @@ function MenuMb({
             style={
               selected === 1
                 ? {
-                  height: '28vw',
-                  overflow: 'visible'
-                }
+                    height: '28vw',
+                    overflow: 'visible'
+                  }
                 : { height: '0px', overflow: 'hidden' }
             }
           >
@@ -109,6 +142,7 @@ function MenuMb({
                     src={tour?.country?.flag?.sourceUrl}
                     width={50}
                     height={50}
+                    quality={85}
                     alt='img'
                     className='w-[14.93vw] h-[14.93vw] rounded-full object-cover'
                   />
@@ -125,7 +159,13 @@ function MenuMb({
             onClick={() => handleSelect(2)}
           >
             <h3 className='text-[5.33vw] leading-[1.2] capitalize opacity-60'>{dataHome?.nav2}</h3>
-            <Image src={iconDropdown} width={11} height={8} alt='img' className='drop-down max-lg:w-[3vw]' />
+            <Image
+              src={iconDropdown}
+              width={11}
+              height={8}
+              alt='img'
+              className='drop-down max-lg:w-[3vw]'
+            />
           </div>
           <div
             className='grid menu-mb_item grid-cols-3 gap-x-[15.2vw] gap-y-[7.47vw] mt-[4.27vw] px-[2.67vw] '
@@ -133,9 +173,9 @@ function MenuMb({
             style={
               selected === 2
                 ? {
-                  height: contentEle2.current.scrollHeight,
-                  overflow: 'visible'
-                }
+                    height: contentEle2.current.scrollHeight,
+                    overflow: 'visible'
+                  }
                 : { height: '0px', overflow: 'hidden' }
             }
           >
@@ -148,9 +188,10 @@ function MenuMb({
                 >
                   <div className='w-[17.3vw] h-[17.3vw] rounded-full border border-solid border-primaryColor flex items-center justify-center bg-[#FFFBE9]'>
                     <Image
-                      src={item?.banner?.travelStyleInfo?.travelStyleImage?.sourceUrl || 'https://res.cloudinary.com/asiavivatravel/images/v1699760680/La-baie-Vinh-Hy-Vietnam-1/La-baie-Vinh-Hy-Vietnam-1.jpg?_i=AA'}
+                      src={item?.banner?.travelStyleInfo?.travelStyleImage?.sourceUrl}
                       width={50}
                       height={50}
+                      quality={85}
                       alt='img'
                       className='w-[10.8vw] h-[10.8vw]  object-contain object-center'
                     />
@@ -168,9 +209,13 @@ function MenuMb({
             onClick={() => handleSelect(3)}
           >
             <h3 className='text-[5.33vw] leading-[1.2] capitalize opacity-60'>
-              <Link href={`/${lang}/hot-deals`} onClick={onCloseMenu} >
+              <Link
+                href={`/${lang}/hot-deals`}
+                onClick={onCloseMenu}
+              >
                 {dataHome?.nav3}
-              </Link></h3>
+              </Link>
+            </h3>
           </div>
         </div>
         {/* Item 4 */}
@@ -180,7 +225,13 @@ function MenuMb({
             onClick={() => handleSelect(4)}
           >
             <h3 className='text-[5.33vw] leading-[1.2] capitalize opacity-60'>{dataHome?.nav6}</h3>
-            <Image src={iconDropdown} width={11} height={8} alt='img' className='drop-down max-lg:w-[3vw]' />
+            <Image
+              src={iconDropdown}
+              width={11}
+              height={8}
+              alt='img'
+              className='drop-down max-lg:w-[3vw]'
+            />
           </div>
           <div
             className={`hidden-scroll flex overflow-x-auto gap-[3.2vw] mt-[3.73vw] menu-mb_item rcmService_mb`}
@@ -188,14 +239,19 @@ function MenuMb({
             style={
               selected === 4
                 ? {
-                  height: contentEle4.current.scrollHeight,
-                  overflow: 'auto'
-                }
+                    height: contentEle4.current.scrollHeight,
+                    overflow: 'auto'
+                  }
                 : { height: '0px', overflow: 'hidden' }
             }
           >
             {rcmServicesList?.data?.categories?.nodes?.map((item, index) => (
-              <ServiceItem key={index} data={item} lang={lang} onCloseMenu={onCloseMenu} />
+              <ServiceItem
+                key={index}
+                data={item}
+                lang={lang}
+                onCloseMenu={onCloseMenu}
+              />
             ))}
           </div>
         </div>
@@ -217,7 +273,13 @@ function MenuMb({
             onClick={() => handleSelect(5)}
           >
             <h3 className='text-[5.33vw] leading-[1.2] capitalize opacity-60 mr-[3.2vw]'>{dataHome?.nav5}</h3>
-            <Image src={iconDropdown} width={11} height={8} alt='img' className='drop-down max-lg:w-[3vw]' />
+            <Image
+              src={iconDropdown}
+              width={11}
+              height={8}
+              alt='img'
+              className='drop-down max-lg:w-[3vw]'
+            />
           </div>
           <div
             className='flex flex-col gap-[3.2vw] mt-[5.07vw] menu-mb_item'
@@ -225,9 +287,9 @@ function MenuMb({
             style={
               selected === 5
                 ? {
-                  height: contentEle5.current.scrollHeight,
-                  overflow: 'visible'
-                }
+                    height: contentEle5.current.scrollHeight,
+                    overflow: 'visible'
+                  }
                 : { height: '0px', overflow: 'hidden' }
             }
           >

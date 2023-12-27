@@ -11,9 +11,10 @@ function StyleItem({ id, title, image, lang, onCloseMenu }) {
       onClick={onCloseMenu}
     >
       <Image
-        src={image?.sourceUrl || 'https://res.cloudinary.com/asiavivatravel/images/v1699670076/Baia-di-Halong/Baia-di-Halong.jpg?_i=AA'}
+        src={image?.sourceUrl}
         width={100}
         height={100}
+        quality={85}
         alt={image?.altText || 'style travel'}
         className='w-[4.1vw] h-[4.1vw] object-contain'
       />

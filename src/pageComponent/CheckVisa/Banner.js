@@ -77,13 +77,13 @@ function Banner({ data, dataFilter, lang }) {
           src={onlySmallScreen ? dataBanner?.imagebannermobile?.sourceUrl : dataBanner?.imagebanner?.sourceUrl}
           width={1000}
           height={1000}
-          quality={100}
+          quality={85}
           className='h-full absolute w-full z-[1] object-cover'
         />
         {dataBanner?.imageuser?.sourceUrl && <Image
           alt='banner'
           src={dataBanner?.imageuser?.sourceUrl}
-          quality={100}
+          quality={85}
           width={200}
           height={200}
           className='md:w-[31.125vw] md:h-[41.875vw] w-[60.26667vw] h-[81.6vw] object-cover absolute bottom-0 md:right-[8vw] right-0 z-[3] '

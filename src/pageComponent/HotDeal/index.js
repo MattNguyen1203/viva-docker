@@ -54,6 +54,8 @@ export default function Promotion({
         <Image
           src={promoBg}
           alt='promoBg'
+          quality={85}
+          fill
           className='md:block hidden w-full h-full absolute top-0 left-0 -z-[1]'
         />
       </div>
@@ -63,6 +65,8 @@ export default function Promotion({
           <Image
             src={tour}
             alt='tour'
+            quality={85}
+            fill
             className='absolute top-0 left-0 w-full h-[150vw] opacity-5 z-0'
           />
           <div

@@ -84,6 +84,7 @@ export default function AboutVideo({ data = {}, lang }) {
           alt={data?.thumbnail?.altText || 'thumb'}
           width={1000}
           height={1000}
+          quality={85}
           priority
           className='hidden object-cover w-full h-full md:block'
         />
@@ -93,6 +94,7 @@ export default function AboutVideo({ data = {}, lang }) {
           alt={data?.thumbnailMb?.altText || data?.thumbnailmb?.altText || 'thumb'}
           width={1000}
           height={1000}
+          quality={85}
           priority
           className='object-cover w-full h-full md:hidden'
         />

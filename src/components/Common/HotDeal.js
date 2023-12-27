@@ -60,7 +60,7 @@ export default function HotDeal({ listVoucher, menu, lang, onCloseMenu, dictiona
         <Image
           alt='image'
           src={imageSrc}
-          quality={100}
+          quality={85}
           className='w-full h-[70vw] absolute top-0 left-0 object-cover z-[-1] max-md:hidden'
         />
       )}

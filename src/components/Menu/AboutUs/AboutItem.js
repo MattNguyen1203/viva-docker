@@ -9,9 +9,10 @@ function AboutItem({ data, slug, onCloseMenu, lang }) {
       onClick={onCloseMenu}
     >
       <Image
-        src={data?.backgroundMenu?.sourceUrl || data?.image?.sourceUrl ||  'https://res.cloudinary.com/asiavivatravel/images/v1699760680/La-baie-Vinh-Hy-Vietnam-1/La-baie-Vinh-Hy-Vietnam-1.jpg?_i=AA'}
+        src={data?.backgroundMenu?.sourceUrl || data?.image?.sourceUrl}
         width={200}
         height={200}
+        quality={85}
         alt={data?.backgroundMenu?.altText || data?.image?.altText}
         className='h-[19vw] w-full object-cover rounded-[0.625vw]'
       />
@@ -20,6 +21,7 @@ function AboutItem({ data, slug, onCloseMenu, lang }) {
           src={icon}
           width={100}
           height={100}
+          quality={85}
           alt='img'
           className='w-[3.56vw] h-[2.625vw] object-contain'
         />

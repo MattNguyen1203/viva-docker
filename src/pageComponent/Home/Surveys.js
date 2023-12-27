@@ -17,7 +17,7 @@ function Surveys({ data, button, lang, dataBookTour, dictionary }) {
       <Image
         alt='img'
         src={bgTourItemMB}
-        quality={100}
+        quality={85}
         className='absolute w-full h-[90vw] object-cover top-0 z-[-1] md:hidden'
       />
       <div className='flex content pt-[6.38vw] max-md:flex-col max-md:pt-[14.93vw] relative z-10'>
@@ -54,6 +54,7 @@ function Surveys({ data, button, lang, dataBookTour, dictionary }) {
                   src={item?.icon?.sourceUrl}
                   width={100}
                   height={100}
+                  quality={85}
                   alt='img'
                   className='w-[4.375vw] h-[4.375vw] object-contain max-md:w-[14.99vw] max-md:h-[14.99vw]'
                 />
@@ -83,6 +84,7 @@ function Surveys({ data, button, lang, dataBookTour, dictionary }) {
             src={imgPerson}
             width={500}
             height={500}
+            quality={85}
             alt='img'
             className='relative z-20 w-[47vw] h-[34vw] object-contain max-md:w-full max-md:h-[70.9vw] md:right-[-14%]'
           />

@@ -25,7 +25,7 @@ async function Banner({ slug,lang }) {
         <Image
           alt={imageSrc?.altText || 'img-types-of-trips'}
           src={imageSrc?.sourceUrl}
-          quality={100}
+          quality={85}
           fill
           className='w-[100%] h-screen object-cover z-[-1]'
         />

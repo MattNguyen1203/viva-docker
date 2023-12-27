@@ -19,7 +19,7 @@ const nextConfig = {
         hostname: 'asia-vivatravel.s3.eu-west-2.amazonaws.com'
       }
     ],
-    formats: ['image/avif', 'image/webp'],
+    // formats: ['image/avif', 'image/webp'],
   },
   // images: {
   //   loader: 'custom',

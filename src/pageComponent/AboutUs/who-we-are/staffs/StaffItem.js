@@ -9,6 +9,7 @@ export default function StaffItem({ staff = {} }) {
         alt={staff?.image?.altText}
         width={1000}
         height={1000}
+        quality={85}
         className='h-[21.84vw] w-full max-md:h-[57.6vw] object-cover'
       />
       <div className='md:min-h-[10vw] md:pl-[1.359vw] pl-[3.677vw] md:pr-[1.43vw] pr-[3.32vw] md:pt-[1.92vw] pt-[5.18vw] md:pb-[2.125vw] pb-[5.05vw]'>
@@ -23,6 +24,7 @@ export default function StaffItem({ staff = {} }) {
             <Image
               src={inImg}
               alt='image'
+              quality={85}
               className='md:w-[1.875vw] w-[4.8vw] md:h-[1.875vw] h-[4.8vw] object-contain'
             />
           </a>

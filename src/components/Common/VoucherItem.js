@@ -22,6 +22,7 @@ function VoucherItem({ className, data = {}, lang, dictionary }) {
           <Image 
             src={voucherData?.detailImage?.sourceUrl || logo} 
             alt='' 
+            quality={85}
             width={235} 
             height={170} 
             style={{width: '100%', height: '100%', objectFit: 'cover'}}/>

@@ -69,7 +69,7 @@ export default function TourDetailBanner({ data = {}, headerData, price, lang })
                   width={1000}
                   height={1000}
                   priority
-                  quality={100}
+                  quality={85}
                   className='z-0 object-cover w-full h-full cursor-pointer select-none'
                 />
                 <Image
@@ -104,6 +104,7 @@ export default function TourDetailBanner({ data = {}, headerData, price, lang })
                 alt={img?.altText || img?.title || 'img'}
                 width={1000}
                 height={1000}
+                quality={85}
                 priority
                 className='object-cover w-full h-full cursor-pointer select-none'
               />
@@ -235,7 +236,7 @@ export default function TourDetailBanner({ data = {}, headerData, price, lang })
                 width={200}
                 height={200}
                 priority
-                quality={100}
+                quality={85}
                 className='w-[7.1875vw] h-[4.9375vw] max-lg:rounded object-cover rounded-lg select-none cursor-pointer'
               />
               <Image
@@ -256,6 +257,7 @@ export default function TourDetailBanner({ data = {}, headerData, price, lang })
                   priority
                   width={1000}
                   height={1000}
+                  quality={85}
                   className='w-[7.1875vw] h-[4.9375vw] object-cover rounded-lg max-lg:rounded select-none cursor-pointer'
                 />
               </div>

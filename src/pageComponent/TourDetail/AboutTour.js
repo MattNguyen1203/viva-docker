@@ -591,6 +591,7 @@ export default function AboutTour(props) {
                 alt={data?.map?.image?.altText}
                 width={1000}
                 height={1000}
+                quality={85}
                 className='md:block hidden w-full md:h-[30vw] h-[130vw] object-contain  rounded shadow-lg'
                 ref={imageMapRef}
                 onClick={() => setOpenPopUp(true)}

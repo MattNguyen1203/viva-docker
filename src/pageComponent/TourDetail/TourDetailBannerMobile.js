@@ -57,11 +57,12 @@ export default function TourDetailBannerMobile({ data = {}, price, lang }) {
               <SwiperSlide key={index}>
                 <div className='relative w-full h-full'>
                   <Image
-                    src={img?.sourceUrl || 'https://res.cloudinary.com/asiavivatravel/images/v1699670076/Baia-di-Halong/Baia-di-Halong.jpg?_i=AA'}
+                    src={img?.sourceUrl}
                     alt={img?.altText || 'img'}
                     width={1000}
                     height={1000}
                     priority
+                    quality={85}
                     className='object-cover w-full h-full select-none'
                   />
                   <div className='bg-[#00000033] w-full h-full absolute top-0 left-0'></div>

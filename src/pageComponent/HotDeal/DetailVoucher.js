@@ -309,6 +309,7 @@ const DetailVocher = ({ headerData = {}, data, lang, dictionary, dataCountry }) 
           alt='Detail voucher'
           width={235}
           height={170}
+          quality={85}
           className='w-[29.1875vw] h-[33.5vw] max-md:hidden object-cover rounded-lg'
         />
       </div>

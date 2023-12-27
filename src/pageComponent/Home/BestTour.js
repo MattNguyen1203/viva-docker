@@ -131,6 +131,7 @@ function BestTour({ button, finalData, dictionary, dataFilter }) {
               src={imgTour}
               alt='img-tour'
               fill
+              quality={85}
               className='object-cover h-full rounded-[1vw]'
             />
             <div className='absolute flex flex-col items-center justify-center'>

@@ -4,7 +4,12 @@ import searchIcon from '@/assets/images/search-normal.svg'
 import styleIcon from '@/assets/images/style-travel.svg'
 import wallet from '@/assets/images/wallet.svg'
 import Button from '@/components/Common/Button'
-import { DATA_TAXONOMIES_BUDGET_GQL, DATA_TAXONOMIES_COUNTRY_GQL, DATA_TAXONOMIES_DURATION_GQL, DATA_TAXONOMIES_TOUR_STYLE_GQL } from '@/graphql/filter/queries'
+import {
+  DATA_TAXONOMIES_BUDGET_GQL,
+  DATA_TAXONOMIES_COUNTRY_GQL,
+  DATA_TAXONOMIES_DURATION_GQL,
+  DATA_TAXONOMIES_TOUR_STYLE_GQL
+} from '@/graphql/filter/queries'
 import { useClickOutside } from '@/helpers/customHooks'
 import { useQuery } from '@apollo/client'
 import { createTheme } from '@mui/material'
@@ -70,7 +75,7 @@ function FilterPopup() {
   const handleSort = (fn = []) => {
     let clone = [...fn]
     if (clone?.length > 0) {
-      clone = sortBy(clone, item => {
+      clone = sortBy(clone, (item) => {
         return +item?.name.split('-')[0]
       })
     }
@@ -80,11 +85,11 @@ function FilterPopup() {
 
   const arrDuration = handleSort(dataFilter?.duration)
 
-  const arrCountry = sortBy(dataFilter?.country, item => {
+  const arrCountry = sortBy(dataFilter?.country, (item) => {
     return +item?.country?.priority
   })
 
-  const arrStyle = sortBy(dataFilter?.style, item => {
+  const arrStyle = sortBy(dataFilter?.style, (item) => {
     return +item?.banner?.travelStyleInfo?.priority
   })
 
@@ -205,7 +210,13 @@ function FilterPopup() {
           ref={searchRef}
           className='w-[4.5vw] h-[4.5vw] rounded-[50%] absolute right-[3.31vw] bg-[#FFD220] flex justify-center items-center flex-shrink-0 z-20'
         >
-          <svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22' fill='none'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='22'
+            height='22'
+            viewBox='0 0 22 22'
+            fill='none'
+          >
             <path
               d='M10.5413 19.2502C15.3508 19.2502 19.2497 15.3513 19.2497 10.5418C19.2497 5.73235 15.3508 1.8335 10.5413 1.8335C5.73186 1.8335 1.83301 5.73235 1.83301 10.5418C1.83301 15.3513 5.73186 19.2502 10.5413 19.2502Z'
               stroke='#171717'
@@ -261,7 +272,7 @@ function FilterPopup() {
                     lineHeight: '1.5',
                     marginLeft: '4px'
                   }
-                },
+                }
               }}
             >
               <Select
@@ -271,7 +282,7 @@ function FilterPopup() {
                 inputprops={{ 'aria-label': 'Without label' }}
                 renderValue={() => {
                   let name = option?.style
-                  if (travelStyle !== "") {
+                  if (travelStyle !== '') {
                     const nameCountry = arrStyle?.find((item, index) => item?.slug === travelStyle)
                     name = nameCountry?.name
                   }
@@ -292,7 +303,11 @@ function FilterPopup() {
                 }}
               >
                 {arrStyle?.map((item, index) => (
-                  <MenuItem value={item?.slug} key={index} className='filter-item'>
+                  <MenuItem
+                    value={item?.slug}
+                    key={index}
+                    className='filter-item'
+                  >
                     <span className='filter-item md:text-[1.0625vw] md:font-[500] leading-[130%] text-textColor text-[2.93333vw] font-[400]'>
                       {item?.name}
                     </span>
@@ -329,7 +344,7 @@ function FilterPopup() {
                     lineHeight: '1.5',
                     marginLeft: '4px'
                   }
-                },
+                }
               }}
             >
               <Select
@@ -339,9 +354,9 @@ function FilterPopup() {
                 inputprops={{ 'aria-label': 'Without label' }}
                 renderValue={() => {
                   let name = option?.duration
-                  if (duration !== "") {
+                  if (duration !== '') {
                     const nameCountry = arrDuration?.find((item, index) => item?.name === duration)
-                    name = nameCountry?.name + " " + option.day
+                    name = nameCountry?.name + ' ' + option.day
                   }
                   return name
                 }}
@@ -360,7 +375,11 @@ function FilterPopup() {
                 }}
               >
                 {arrDuration?.map((item, index) => (
-                  <MenuItem value={item?.name} key={index} className='filter-item'>
+                  <MenuItem
+                    value={item?.name}
+                    key={index}
+                    className='filter-item'
+                  >
                     <span className='filter-item md:text-[1.0625vw] md:font-[500] leading-[130%] text-textColor text-[2.93333vw] font-[400]'>
                       {item?.name} {option.day}
                     </span>
@@ -397,7 +416,7 @@ function FilterPopup() {
                     lineHeight: '1.5',
                     marginLeft: '4px'
                   }
-                },
+                }
               }}
             >
               <Select
@@ -407,9 +426,9 @@ function FilterPopup() {
                 inputprops={{ 'aria-label': 'Without label' }}
                 renderValue={() => {
                   let name = option?.budget
-                  if (budget !== "") {
+                  if (budget !== '') {
                     const nameCountry = arrBudget?.find((item, index) => item?.name === budget)
-                    name = nameCountry?.name + " " + option.price
+                    name = nameCountry?.name + ' ' + option.price
                   }
                   return name
                 }}
@@ -428,7 +447,11 @@ function FilterPopup() {
                 }}
               >
                 {arrBudget?.map((item, index) => (
-                  <MenuItem value={item?.name} key={index} className='filter-item'>
+                  <MenuItem
+                    value={item?.name}
+                    key={index}
+                    className='filter-item'
+                  >
                     <span className='filter-item md:text-[1.0625vw] md:font-[500] leading-[130%] text-textColor text-[2.93333vw] font-[400]'>
                       {item?.name} {option.price}
                     </span>
@@ -438,8 +461,18 @@ function FilterPopup() {
             </FormControl>
           </div>
         </div>
-        <Button onClick={handleSearch} className='btn-primary w-fit '>
-          <Image src={searchIcon} width={50} height={50} alt='search' className='w-[1.25vw] h-[1.25vw]' />
+        <Button
+          onClick={handleSearch}
+          className='btn-primary w-fit '
+        >
+          <Image
+            src={searchIcon}
+            width={50}
+            height={50}
+            alt='search'
+            quality={85}
+            className='w-[1.25vw] h-[1.25vw]'
+          />
           {option.search}
         </Button>
       </div>

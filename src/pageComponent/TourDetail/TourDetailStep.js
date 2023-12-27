@@ -51,6 +51,7 @@ export default function TourDetailStep({ data: tourDetailData,iconsDefault }) {
                       key={index}
                       width={500}
                       height={500}
+                      quality={85}
                       className=' md:max-h-[26.25vw] md:w-[50.0625vw] max-h-[40vw] object-cover mb-[1vw] rounded-[1.06667vw] md:rounded-[0.625vw]'
                     />
                   )
@@ -84,7 +85,7 @@ export default function TourDetailStep({ data: tourDetailData,iconsDefault }) {
                       className='flex md:gap-[0.625vw] gap-[2.13vw] items-center'
                     >
                       <Image
-                        src={item?.image?.sourceUrl || 'https://res.cloudinary.com/asiavivatravel/images/v1699582207/La-cascata-grande-Khone-Phapheng-laos/La-cascata-grande-Khone-Phapheng-laos.jpg?_i=AA'}
+                        src={item?.image?.sourceUrl}
                         alt={item?.image?.altText || item?.image?.title || 'img-tour'}
                         width={40}
                         height={40}

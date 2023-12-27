@@ -16,6 +16,7 @@ function BlogItem({ className, data, lang, heightImage }) {
             src={data?.featuredImage?.node?.sourceUrl || data?.translation?.featuredImage?.node?.sourceUrl || imgTour}
             width={1000}
             height={1000}
+            quality={85}
             alt={data?.featuredImage?.node?.altText || data?.translation?.featuredImage?.node?.altText || 'img blog'}
             className={`md:!h-[16.3125vw] h-[52.26667vw] object-cover md:rounded-[0.5vw] rounded-[2.13333vw] ${className} ${heightImage}`}
           />

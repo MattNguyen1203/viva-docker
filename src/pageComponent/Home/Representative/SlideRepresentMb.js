@@ -33,6 +33,7 @@ function SlideRepresentMb({ data }) {
                     src={item?.img?.sourceUrl}
                     width={500}
                     height={500}
+                    quality={85}
                     alt={item?.img?.altText}
                     className='w-full h-[54.4vw] block object-cover rounded-[1.6vw]'
                   />

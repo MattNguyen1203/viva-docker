@@ -32,6 +32,7 @@ export default function TourDetailVideo({ className, vidLink, overlayImg, isPlay
           alt={overlayImg?.altText}
           width={2000}
           height={1000}
+          quality={85}
           className={`${className?.image || ''} object-cover w-full h-full`}
         />
 

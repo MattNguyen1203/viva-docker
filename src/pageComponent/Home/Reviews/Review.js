@@ -12,7 +12,8 @@ function Review({ data, button, lang }) {
         <Image
           alt='tree'
           src={coconut}
-          quality={100}
+          quality={85}
+          fill
           className='max-md:hidden absolute md:w-[17.5vw] md:h-[20.625vw] top-[5vw] right-0'
         />
         <div className='w-[35.1875vw] max-md:hidden'>
