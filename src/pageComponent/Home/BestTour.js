@@ -4,25 +4,24 @@ import Button from '@/components/Common/Button'
 import FilterTour from '@/components/Common/FilterTour'
 import TourItem from '@/components/Common/TourItem'
 import TourItemMobile from '@/components/Common/TourItemMobile'
-import { DATA_BEST_TOUR_HOME_PAGE } from '@/graphql/filter/queries'
+import theme from '@/components/ThemeRegistry/theme'
+import { DATA_BEST_TOUR_HOME_PAGE, DATA_BEST_TOUR_HOME_PAGE_MOBILE } from '@/graphql/filter/queries'
 import { useQuery } from '@apollo/client'
+import { useMediaQuery } from '@mui/material'
 import { useQueryState } from 'next-usequerystate'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { Suspense } from 'react'
 
-function BestTour({
-  button,
-  finalData,
-  dictionary,
-  dataFilter
-}) {
+function BestTour({ button, finalData, dictionary, dataFilter }) {
   const { lang } = useParams()
   const [destination] = useQueryState('destination')
   const [budget] = useQueryState('budget')
   const [duration] = useQueryState('duration')
   const [style] = useQueryState('style')
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
   function handleTaxonomiesSlug(data) {
     const newArrDataTaxonomies = []
@@ -51,7 +50,7 @@ function BestTour({
   //   budget: budgets?.allBudget?.nodes,
   //   duration: durations?.allDuration?.nodes
   // }
-  const { data: bestTours, loading } = useQuery(DATA_BEST_TOUR_HOME_PAGE, {
+  const { data: bestTours, loading } = useQuery(isMobile ? DATA_BEST_TOUR_HOME_PAGE_MOBILE : DATA_BEST_TOUR_HOME_PAGE, {
     variables: {
       language: lang?.toUpperCase(),
       countrySlug: destination || newArrDataTaxonomiesCountry,
@@ -82,7 +81,9 @@ function BestTour({
           data-aos-once='true'
           data-aos-disabled='true'
           data-aos='fade-up'
-          data-aos-duration='1000' className='bg-white mt-[2vw] w-max rounded-[1.125vw] px-[2.38vw] py-[2vw] max-md:mt-[4.27vw] max-md:p-0 max-md:bg-transparent max-md:w-full'>
+          data-aos-duration='1000'
+          className='bg-white mt-[2vw] w-max rounded-[1.125vw] px-[2.38vw] py-[2vw] max-md:mt-[4.27vw] max-md:p-0 max-md:bg-transparent max-md:w-full'
+        >
           <Suspense fallback={<div>Loading ...</div>}>
             <FilterTour
               dataFilter={dataFilter}
@@ -93,10 +94,11 @@ function BestTour({
       </div>
 
       <div
-        className={`${allTours?.length === 0
-          ? `w-full block md:mt-[1.88vw] mt-[7.73vw]`
-          : 'grid grid-cols-4 relative gap-[2.5vw] md:mt-[1.88vw] mt-[7.73vw] max-md:grid-cols-1 w-[83.75%] ml-auto mr-auto max-md:w-full'
-          }`}
+        className={`${
+          allTours?.length === 0
+            ? `w-full block md:mt-[1.88vw] mt-[7.73vw]`
+            : 'grid grid-cols-4 relative gap-[2.5vw] md:mt-[1.88vw] mt-[7.73vw] max-md:grid-cols-1 w-[83.75%] ml-auto mr-auto max-md:w-full'
+        }`}
       >
         <div className='md:hidden bg-tourMobile'></div>
         {allTours?.length !== 0 ? (

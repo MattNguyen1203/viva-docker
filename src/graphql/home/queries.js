@@ -37,7 +37,7 @@ const GET_HOME_PAGE = `query getHomePageData($id:ID!) {
           title
           type {
             icon {
-              sourceUrl
+              sourceUrl(size: THUMBNAIL)
             }
             text
           }
@@ -60,12 +60,12 @@ const GET_HOME_PAGE = `query getHomePageData($id:ID!) {
                 travelStyleName	
                 travelStyleImage {
                   altText
-                  sourceUrl
+                  sourceUrl(size: MEDIUM_LARGE)
                 }
                 textHomePage
                 imageHomePage {
                   id
-                  sourceUrl
+                  sourceUrl(size: MEDIUM_LARGE)
                   altText
                 }
               }
@@ -80,7 +80,7 @@ const GET_HOME_PAGE = `query getHomePageData($id:ID!) {
         members {
           img {
             altText
-            sourceUrl
+            sourceUrl(size: MEDIUM_LARGE)
           }
           name
           role
@@ -91,7 +91,7 @@ const GET_HOME_PAGE = `query getHomePageData($id:ID!) {
         video {
           thumbnail {
             altText
-            sourceUrl
+            sourceUrl(size: MEDIUM_LARGE)
           }
           label {
             line1
@@ -107,7 +107,7 @@ const GET_HOME_PAGE = `query getHomePageData($id:ID!) {
           }
           thumbnailmb {
             altText
-            sourceUrl
+            sourceUrl(size: MEDIUM_LARGE)
           }
         }
         customerReview {
@@ -124,7 +124,7 @@ const GET_HOME_PAGE = `query getHomePageData($id:ID!) {
                   name
                   thumbnail {
                     altText
-                    sourceUrl
+                    sourceUrl(size: MEDIUM_LARGE)
                   }
                 }
                 time
@@ -137,7 +137,7 @@ const GET_HOME_PAGE = `query getHomePageData($id:ID!) {
                         gallery {
                           altText
                           title
-                          sourceUrl
+                          sourceUrl(size: MEDIUM_LARGE)
                         }
                         location
                         title
@@ -163,7 +163,7 @@ const GET_HOME_PAGE = `query getHomePageData($id:ID!) {
                   name
                   thumbnail {
                     altText
-                    sourceUrl
+                    sourceUrl(size: MEDIUM_LARGE)
                   }
                 }
                 time
@@ -176,7 +176,7 @@ const GET_HOME_PAGE = `query getHomePageData($id:ID!) {
                         gallery {
                           altText
                           title
-                          sourceUrl
+                          sourceUrl(size: MEDIUM_LARGE)
                         }
                         location
                         title
@@ -209,7 +209,7 @@ const GET_HOME_PAGE = `query getHomePageData($id:ID!) {
               }
               featuredImage {
                 node {
-                  sourceUrl
+                  sourceUrl(size: MEDIUM_LARGE)
                   altText
                 }
               }
@@ -223,7 +223,258 @@ const GET_HOME_PAGE = `query getHomePageData($id:ID!) {
         footer {
           logoPartner {
             altText
-            sourceUrl
+            sourceUrl(size: MEDIUM)
+          }
+          column1 {
+            contact {
+              title
+              content
+            }
+            linkFb
+            linkLinked
+            linkInstargram
+            linkYoutube
+          }
+          column2 {
+            title
+            officesVietnam {
+              title
+              content
+            }
+          }
+          column3 {
+            title
+            officesAboard {
+              title
+              content
+            }
+          }
+          column4 {
+            titlePayment
+            imgsPayment {
+              sourceUrl
+              altText
+            }
+            titleForum
+            imgsForum {
+              img {
+                sourceUrl
+              }
+              link
+            }
+          }
+        }
+      }
+  }
+}`
+
+const GET_HOME_PAGE_MOBILE = `query getHomePageData($id:ID!) {
+  page(id: $id) {
+      home {
+        groupbutton{
+        buttonbooktour
+        buttonseemore
+        }
+        banner {
+          fieldGroupName
+          text
+          background {
+            sourceUrl(size: MEDIUM_LARGE)
+          }
+        }
+        survey {
+          fieldGroupName
+          text
+          title
+          type {
+            icon {
+              sourceUrl(size: THUMBNAIL)
+            }
+            text
+          }
+        }
+        inspectionTrip {
+          title
+        }
+        bestTour {
+          fieldGroupName
+          title
+        }
+        travelStyle {
+          title
+          desc
+          travelStyleList {
+            id
+            slug
+            banner {
+              travelStyleInfo {
+                travelStyleName	
+                travelStyleImage {
+                  altText
+                  sourceUrl(size: MEDIUM)
+                }
+                textHomePage
+                imageHomePage {
+                  id
+                  sourceUrl(size: MEDIUM)
+                  altText
+                }
+              }
+            }
+          }
+          desc
+          title
+        }
+        representative {
+        title
+        desc
+        members {
+          img {
+            altText
+            sourceUrl(size: MEDIUM)
+          }
+          name
+          role
+          email
+          telephone
+        }
+      }
+        video {
+          thumbnail {
+            altText
+            sourceUrl(size: MEDIUM)
+          }
+          label {
+            line1
+            line2
+          }
+          video {
+            mediaItemUrl
+            mimeType
+          }
+          videomb {
+            mediaItemUrl
+            mimeType
+          }
+          thumbnailmb {
+            altText
+            sourceUrl(size: MEDIUM)
+          }
+        }
+        customerReview {
+          fieldGroupName
+          text
+          title
+          video
+          customerReview {
+            ... on CustomerReview {
+              slug
+              customerReview {
+                authorInformation {
+                  country
+                  name
+                  thumbnail {
+                    altText
+                    sourceUrl(size: MEDIUM)
+                  }
+                }
+                time
+                content
+                tours {
+                  ... on Tours {
+                    slug
+                    tourDetail {
+                      banner {
+                        gallery {
+                          altText
+                          title
+                          sourceUrl(size: MEDIUM)
+                        }
+                        location
+                        title
+                      }
+                      numberDay
+                    }
+                    countries {
+                      nodes {
+                        slug
+                      }
+                    }
+                  }
+                }
+              } 
+            }
+          }
+          listReview {
+            ... on CustomerReview {
+              slug
+              customerReview {
+                authorInformation {
+                  country
+                  name
+                  thumbnail {
+                    altText
+                    sourceUrl(size: MEDIUM)
+                  }
+                }
+                time
+                content
+                tours {
+                  ... on Tours {
+                    slug
+                    tourDetail {
+                      banner {
+                        gallery {
+                          altText
+                          title
+                          sourceUrl(size: MEDIUM)
+                        }
+                        location
+                        title
+                      }
+                      numberDay
+                    }
+                    countries {
+                      nodes {
+                        slug
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        blogs {
+          fieldGroupName
+          title
+          listBlog {
+            ... on Post {
+              id
+              excerpt
+              title
+              slug
+              dateGmt
+              blogdetail {
+								subtitle1
+              }
+              featuredImage {
+                node {
+                  sourceUrl(size: MEDIUM)
+                  altText
+                }
+              }
+              language {
+                code
+                locale
+              }
+            }
+          }
+        }
+        footer {
+          logoPartner {
+            altText
+            sourceUrl(size: MEDIUM)
           }
           column1 {
             contact {
@@ -291,7 +542,7 @@ const GET_FOOTER = `query getHomePageData($language: LanguageCodeEnum!) {
           textDescription
           logoPartner {
             altText
-            sourceUrl
+            sourceUrl(size: MEDIUM)
           }
           column1 {
             contact {
@@ -369,7 +620,7 @@ const GET_META_DATA = `query ($language: LanguageCodeEnum!) {
       featuredImage {
         node {
           altText
-          sourceUrl
+          sourceUrl(size: MEDIUM)
         }
       }
     }
@@ -443,7 +694,7 @@ const GET_DATA_iNSEPECT = `query getDataInsepect(
         slug
         featuredImage{
           node{
-            sourceUrl
+            sourceUrl(size: MEDIUM_LARGE)
             altText
             title
           }
@@ -487,4 +738,4 @@ query($language : LanguageCodeFilterEnum!){
   }
 }
 `
-export { DATA_HEADER, GET_HOME_PAGE, GET_NEXT_STEP, GET_FOOTER, GET_META_DATA, GET_SOCIAL_MOBILE, GET_INFO_CONTACT, GET_DATA_iNSEPECT, GET_INITIAL_FILTER }
+export { DATA_HEADER, GET_HOME_PAGE, GET_HOME_PAGE_MOBILE, GET_NEXT_STEP, GET_FOOTER, GET_META_DATA, GET_SOCIAL_MOBILE, GET_INFO_CONTACT, GET_DATA_iNSEPECT, GET_INITIAL_FILTER }

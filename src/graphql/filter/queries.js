@@ -369,7 +369,72 @@ query GetFilterTour(
           banner {
             title
             gallery {
-              sourceUrl
+              sourceUrl(size: MEDIUM_LARGE)
+              altText
+              title
+            }
+            location
+            rate
+            icons
+          }
+        }
+      }
+    }
+  }
+}
+`
+
+const DATA_BEST_TOUR_HOME_PAGE_MOBILE = gql`
+query GetFilterTour(
+  $language: LanguageCodeEnum!
+  $countrySlug: [String!]
+  $styleTourSlug: [String!]
+  $bestSellerSlug: [String!]
+  $budget: [String!]
+  $duration: [String!]
+) {
+  allTours(
+    first: 7,
+    where: {
+      taxQuery: {
+        taxArray: [
+          { taxonomy: COUNTRIES, operator: IN, terms: $countrySlug, field: NAME }
+          { taxonomy: TOURSTYLE, operator: IN, terms: $styleTourSlug, field: SLUG }
+          { taxonomy: BESTSELLER, operator: IN, terms: $bestSellerSlug, field: SLUG }
+          { taxonomy: BUDGET, operator: IN, terms: $budget, field: NAME }
+          { taxonomy: DURATION, operator: IN, terms: $duration, field: NAME }
+        ]
+      }
+      orderby: { field: DATE, order: DESC }
+    }
+  ) {
+    pageInfo {
+      offsetPagination {
+        total
+      }
+    }
+    nodes {
+      translation(language: $language) {
+        id
+        title
+        slug
+        bestSeller {
+          nodes {
+            name
+          }
+        }
+        tourStyle {
+          nodes {
+            slug
+          }
+        }
+        tourDetail {
+          priceTour
+          numberDay
+          banner {
+            title
+            gallery {
+              sourceUrl(size: MEDIUM)
               altText
               title
             }
@@ -486,5 +551,6 @@ export {
   DATA_BEST_TOUR,
   DATA_TAXONOMIES_BUDGET,
   DATA_TAXONOMIES_DURATION,
-  DATA_PROMOTION_TOUR
+  DATA_PROMOTION_TOUR,
+  DATA_BEST_TOUR_HOME_PAGE_MOBILE
 }
