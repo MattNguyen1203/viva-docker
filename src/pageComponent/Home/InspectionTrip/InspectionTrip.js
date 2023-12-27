@@ -1,8 +1,18 @@
-import TripSlider from "./Slider"
+import Image from 'next/image'
+import TripSlider from './Slider'
+import bgTrip from '@/assets/images/bg-ins-trip.png'
+
 
 function InspectionTrip({ data, lang, dataSlide }) {
   return (
-    <div className='inspection-trip mt-[8.38vw] max-md:mt-[11.68vw]'>
+    <div className='inspection-trip relative mt-[8.38vw] max-md:mt-[11.68vw]'>
+      <Image
+        alt='trip'
+        src={bgTrip}
+        quality={85}
+        fill
+        className='absolute w-full h-auto object-cover top-0 z-[-1] hidden md:block'
+      />
       <h2
         className='text-center heading-1 max-md:text-start max-md:pl-[4.27vw]'
         data-aos-once='true'
@@ -19,11 +29,12 @@ function InspectionTrip({ data, lang, dataSlide }) {
         data-aos-disabled='true'
         className='relative mt-[3.5vw]'
       >
-        <TripSlider dataSlide={dataSlide} lang={lang} />
+        <TripSlider
+          dataSlide={dataSlide}
+          lang={lang}
+        />
         <div className='flex absolute top-[50%] -translate-y-2/4 z-10 w-full justify-between max-md:hidden'>
-          <button
-            className='image-swiper-button-prev w-[3.625vw] h-[3.625vw] rounded-full flex justify-center items-center bg-primaryColor button-slide__tour absolute left-[5.6vw] top-[50%] -translate-y-2/4'
-          >
+          <button className='image-swiper-button-prev w-[3.625vw] h-[3.625vw] rounded-full flex justify-center items-center bg-primaryColor button-slide__tour absolute left-[5.6vw] top-[50%] -translate-y-2/4'>
             <svg
               width='24'
               height='24'
@@ -38,9 +49,7 @@ function InspectionTrip({ data, lang, dataSlide }) {
               />
             </svg>
           </button>
-          <button
-            className='image-swiper-button-next w-[3.625vw] h-[3.625vw] rounded-full flex justify-center items-center bg-primaryColor button-slide__tour absolute right-[5.6vw] top-[50%] -translate-y-2/4'
-          >
+          <button className='image-swiper-button-next w-[3.625vw] h-[3.625vw] rounded-full flex justify-center items-center bg-primaryColor button-slide__tour absolute right-[5.6vw] top-[50%] -translate-y-2/4'>
             <svg
               width='24'
               height='24'

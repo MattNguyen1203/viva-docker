@@ -29,6 +29,9 @@ import Surveys from '@/pageComponent/Home/Surveys'
 import TravelStyle from '@/pageComponent/Home/TravelStyle/TravelStyle'
 import TravelStyleMb from '@/pageComponent/Home/TravelStyle/TravelStyleMb'
 import { Suspense } from 'react'
+import bgBeach from '@/assets/images/bg-beach.jpg'
+import Image from 'next/image'
+
 
 export async function generateMetadata({ params: { lang } }) {
   const res = await fetchData(GET_META_DATA, {
@@ -47,7 +50,6 @@ export default async function page({ params, searchParams }) {
   const language = lang?.toUpperCase() || 'EN'
 
   // const isMobile = searchParams?.viewport === 'mobile'
-
 
   const [nextStep, data, dataBookTour, dataInit, budgets, durations, styles, countries] = await Promise.all([
     fetchData(GET_NEXT_STEP, { language }),
@@ -125,7 +127,14 @@ export default async function page({ params, searchParams }) {
             lang={lang}
           />
         </div>
-        <div className='bg-home34'>
+        <div className='relative'>
+          <Image
+            alt='beach'
+            src={bgBeach}
+            quality={85}
+            fill
+            className='absolute w-full h-auto object-cover top-0 z-[-1] hidden md:block'
+          />
           <Suspense fallback={<div>Loading...</div>}>
             <BestTour
               finalData={finalData}
@@ -158,7 +167,7 @@ export default async function page({ params, searchParams }) {
             lang={lang}
           />
         </div>
-        <div className='relative bg-home67'>
+        <div className='relative'>
           <div className='max-md:mt-[15.12vw] mt-[8.62vw]'>
             <BookingProcessSteps data={nextStepBookTour} />
           </div>

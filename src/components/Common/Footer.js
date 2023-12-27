@@ -5,6 +5,7 @@ import { GET_FOOTER } from '@/graphql/home/queries'
 import Image from 'next/image'
 import Link from 'next/link'
 import SlidePartners from './SlidePartners'
+import bgFooter from '@/assets/images/bg-footer.jpg'
 
 async function Footer({ lang }) {
   const data = await fetchData(GET_FOOTER, { language: lang?.toUpperCase() })
@@ -15,8 +16,17 @@ async function Footer({ lang }) {
   const col3 = footerData?.column3
   const col4 = footerData?.column4
   return (
-    <footer className='footer max-md:pb-[24.5vw] pb-[4.75vw] pt-[2.62vw] max-md:pt-[16.27vw]'>
-      <h3 className='md:px-[8.06vw] px-[4.27vw] md:w-[75%] text-textColor font-semibold max-md:mb-[6vw] md:text-[3vw] text-[5.8vw] capitalize font-optima'>{footerData?.textDescription}</h3>
+    <footer className='footer relative max-md:pb-[24.5vw] pb-[4.75vw] pt-[2.62vw] max-md:pt-[16.27vw]'>
+      <Image
+        alt='footer'
+        src={bgFooter}
+        quality={85}
+        fill
+        className='absolute w-full h-auto object-cover top-0 z-[-1] opacity-30'
+      />
+      <h3 className='md:px-[8.06vw] px-[4.27vw] md:w-[75%] text-textColor font-semibold max-md:mb-[6vw] md:text-[3vw] text-[5.8vw] capitalize font-optima'>
+        {footerData?.textDescription}
+      </h3>
       <div className='pointer-events-none select-none'>
         <SlidePartners data={logoPartner} />
         {/* <SlidePartners data={logoPartner} reverse={true} /> */}
@@ -39,7 +49,15 @@ async function Footer({ lang }) {
             >
               <strong>{item?.title} </strong>
 
-              <Link href={`${typeof parseInt(col1?.contact[0]?.content.split(" ").join("").slice(1)) === 'number' ? `tel:${item?.content}` : `mailto:${item?.content}`}`} >{item?.content}</Link>
+              <Link
+                href={`${
+                  typeof parseInt(col1?.contact[0]?.content.split(' ').join('').slice(1)) === 'number'
+                    ? `tel:${item?.content}`
+                    : `mailto:${item?.content}`
+                }`}
+              >
+                {item?.content}
+              </Link>
             </div>
           ))}
           <div className='flex items-center gap-[0.89vw] mt-[1.25vw] max-md:gap-[4.27vw] max-md:mt-[3.2vw]'>
@@ -55,7 +73,13 @@ async function Footer({ lang }) {
                 viewBox='0 0 43 43'
                 fill='none'
               >
-                <circle cx='21.4091' cy='21.4091' r='21.0523' stroke='#171717' strokeWidth='0.713636' />
+                <circle
+                  cx='21.4091'
+                  cy='21.4091'
+                  r='21.0523'
+                  stroke='#171717'
+                  strokeWidth='0.713636'
+                />
                 <path
                   d='M23.2026 18.7315V16.5928C23.2026 16.2962 23.3054 16.0424 23.5109 15.8314C23.7165 15.6203 23.9677 15.5148 24.2645 15.5148H25.3435V12.8456H23.2026C22.6203 12.8456 22.0837 12.9882 21.5927 13.2734C21.1017 13.5585 20.7106 13.9464 20.4195 14.4369C20.1283 14.9274 19.9827 15.4635 19.9827 16.0452V18.7315H17.8418V21.4007H19.9827V29.9729H23.2026V21.4007H25.3435L26.4054 18.7315H23.2026Z'
                   fill='#171717'
@@ -82,7 +106,12 @@ async function Footer({ lang }) {
                 </g>
                 <defs>
                   <clipPath id='clip0_3137_132'>
-                    <rect width='15' height='15' fill='white' transform='translate(0 0.5)' />
+                    <rect
+                      width='15'
+                      height='15'
+                      fill='white'
+                      transform='translate(0 0.5)'
+                    />
                   </clipPath>
                 </defs>
               </svg>
@@ -197,7 +226,11 @@ async function Footer({ lang }) {
           </h4>
           <div className='flex items-center mt-[1.25vw] gap-[1.5vw] max-md:gap-[8.53vw] max-md:mt-[3.73vw] max-md:justify-center'>
             {col4?.imgsForum?.map((item, index) => (
-              <Link key={index} href={`${item?.link}`} target='_blank'>
+              <Link
+                key={index}
+                href={`${item?.link}`}
+                target='_blank'
+              >
                 <Image
                   src={item?.img?.sourceUrl}
                   width={100}

@@ -2,9 +2,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import bgStyle from '@/assets/images/bg-styleMb.jpg'
+
 function TravelStyleMb({ data, title, lang }) {
   return (
-    <div className='hidden max-md:block pt-[10.67vw] pb-[15.73vw]'>
+    <div className='hidden max-md:block relative pt-[10.67vw] pb-[15.73vw]'>
+      <Image
+        alt='beach'
+        src={bgStyle}
+        quality={85}
+        fill
+        className='absolute w-full h-auto object-cover top-0 z-[-1]'
+      />
       <h2 className='heading-1 pb-[5.33vw] border-b border-solid border-[#ccc] text-center mx-[4.27vw]'>{title}</h2>
       <div className='grid menu-mb_item grid-cols-3 gap-x-[12.27vw] gap-y-[5.6vw] mt-[5.33vw] px-[4.27vw] '>
         {data?.travelStyleList?.map((item, index) => (

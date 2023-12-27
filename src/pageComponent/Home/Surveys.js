@@ -1,5 +1,6 @@
 'use client'
 import bgTourItemMB from '@/assets/images/bg-fb-mb.jpg'
+import bgSurvey from '@/assets/images/bg-surveys.png'
 import imgPerson from '@/assets/images/survey-person.png'
 import BookTour from '@/components/Common/BookTour'
 import Button from '@/components/Common/Button'
@@ -13,7 +14,14 @@ function Surveys({ data, button, lang, dataBookTour, dictionary }) {
   const refBtnBookTour = useRef()
 
   return (
-    <div className='surveys h-[auto] relative max-md:pt-[18vw]'>
+    <div className='h-[auto] relative max-md:pt-[18vw]'>
+      <Image
+        alt='surveys'
+        src={bgSurvey}
+        quality={85}
+        fill
+        className='absolute w-full h-[90vw] object-cover top-0 z-[-1] hidden md:block'
+      />
       <Image
         alt='img'
         src={bgTourItemMB}
@@ -68,13 +76,27 @@ function Surveys({ data, button, lang, dataBookTour, dictionary }) {
             data-aos-disabled='true'
             data-aos-once='true'
             data-aos='fade-up'
-            data-aos-duration='1000' className='flex gap-x-[1vw] mt-[3.25vw] max-md:gap-x-[2.67vw] max-md:mt-[8.53vw]'>
-            <div className='flex' ref={refBtnBookTour} onClick={() => setOpenModal(true)}>
-              <Button className='btn-primary' content={dictionary?.nav.booking_button}><span>{dictionary?.nav.booking_button}</span>
+            data-aos-duration='1000'
+            className='flex gap-x-[1vw] mt-[3.25vw] max-md:gap-x-[2.67vw] max-md:mt-[8.53vw]'
+          >
+            <div
+              className='flex'
+              ref={refBtnBookTour}
+              onClick={() => setOpenModal(true)}
+            >
+              <Button
+                className='btn-primary'
+                content={dictionary?.nav.booking_button}
+              >
+                <span>{dictionary?.nav.booking_button}</span>
               </Button>
             </div>
             <Link href={`/${lang}/about-us/who-we-are`}>
-              <Button className='btn-secondary' content={button?.buttonseemore}><span>{button?.buttonseemore}</span>
+              <Button
+                className='btn-secondary'
+                content={button?.buttonseemore}
+              >
+                <span>{button?.buttonseemore}</span>
               </Button>
             </Link>
           </div>
@@ -103,11 +125,21 @@ function Surveys({ data, button, lang, dataBookTour, dictionary }) {
           className='w-[91.46vw] md:w-[82.93vw] md:h-[90vh] h-[80vh]'
         >
           <div className='w-full h-full overflow-y-auto md:rounded-[16px] overflow-x-hidden'>
-            <BookTour data={dataBookTour} setOpenModal={setOpenModal} lang={lang} dictionary={dictionary} />
+            <BookTour
+              data={dataBookTour}
+              setOpenModal={setOpenModal}
+              lang={lang}
+              dictionary={dictionary}
+            />
           </div>
         </ModalCustom>
       )}
-      <div className='absolute bottom-0 w-full h-[10vw]' style={{ background: 'linear-gradient(0deg, #FFF 0%, rgba(255, 255, 255, 0.49) 63.88%, rgba(255, 255, 255, 0.00) 100%)' }}></div>
+      <div
+        className='absolute bottom-0 w-full h-[10vw]'
+        style={{
+          background: 'linear-gradient(0deg, #FFF 0%, rgba(255, 255, 255, 0.49) 63.88%, rgba(255, 255, 255, 0.00) 100%)'
+        }}
+      ></div>
     </div>
   )
 }

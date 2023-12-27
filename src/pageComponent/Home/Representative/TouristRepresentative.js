@@ -1,10 +1,19 @@
+import Image from 'next/image'
 import SlideRepresentMb from './SlideRepresentMb'
 import SlideRepresent from './SlideRepresentative'
+import bgSurvey from '@/assets/images/bg-survey.png'
+
 
 function TouristRepresentative({ data }) {
-
   return (
-    <div className='tourist-representative pt-[4.69vw] pb-[8.42vw] max-md:pt-[13.81vw]'>
+    <div className='tourist-representative relative pt-[4.69vw] pb-[8.42vw] max-md:pt-[13.81vw]'>
+      <Image
+        alt='beach'
+        src={bgSurvey}
+        quality={85}
+        fill
+        className='absolute w-full h-auto object-cover top-0 z-[-1]'
+      />
       <div className='flex md:flex-row flex-col items-center content pb-[6.4vw] md:pb-[3.2vw]'>
         <h2
           className='heading-1 md:w-[28.9375vw] w-full '
@@ -32,14 +41,10 @@ function TouristRepresentative({ data }) {
         data-aos-duration='1000'
         className='max-md:hidden'
       >
-        <SlideRepresent
-          data={data?.members}
-        />
+        <SlideRepresent data={data?.members} />
       </div>
       <div className='hidden max-md:block'>
-        <SlideRepresentMb 
-          data={data?.members}
-        />
+        <SlideRepresentMb data={data?.members} />
       </div>
     </div>
   )

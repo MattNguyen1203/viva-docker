@@ -4,11 +4,19 @@ import Image from 'next/image'
 import Link from 'next/link'
 import SlideReview from './SlideReview'
 import VideoReview from './VideoReview'
+import bgReview from '@/assets/images/bg-rev.png'
 
 function Review({ data, button, lang }) {
   return (
     <div>
       <div className='flex gap-x-[2vw] items-end overflow-hidden relative custom-review pt-[9.37vw]'>
+        <Image
+          alt='beach'
+          src={bgReview}
+          quality={85}
+          fill
+          className='absolute w-full h-auto object-cover top-0 z-[-1]'
+        />
         <Image
           alt='tree'
           src={coconut}
@@ -42,7 +50,8 @@ function Review({ data, button, lang }) {
             data-aos-duration='1000'
             data-aos-offset='-1200'
             className='text-[1.125vw] leading-normal mb-[5.31vw] w-[30.875vw] max-md:text-[3.73vw] max-md:w-full max-md:pl-[4.27vw] max-md:mt-[2.13vw] max-lg:w-[40vw] max-lg:text-[1.6vw]'
-            dangerouslySetInnerHTML={{ __html: `${data?.text}`}}></p>
+            dangerouslySetInnerHTML={{ __html: `${data?.text}` }}
+          ></p>
           <SlideReview
             data={data?.listReview}
             lang={lang}
