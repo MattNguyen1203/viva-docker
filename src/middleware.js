@@ -1,19 +1,19 @@
-import { NextResponse } from 'next/server'
+import { NextResponse, userAgent } from 'next/server'
 
 const defaultLocale = 'en'
 let locales = ['it', 'fr']
-
 
 export function middleware(request) {
   // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname
 
-    // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
+  // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
   // If you have one
   if (
     [
       '/manifest.json',
       '/favicon.ico',
+      '/robots.txt'
       // Your other files in `public`
     ].includes(pathname)
   )
@@ -36,14 +36,20 @@ export function middleware(request) {
     // We are on the default locale
     // Rewrite so Next.js understands
 
+    const { device } = userAgent(request)
+    const viewport = device.type === 'mobile' ? 'mobile' : device.type === 'tablet' ? 'tablet' : 'desktop'
+
+    const newUrl = new URL(`/${defaultLocale}${pathname}`, request.url)
+
     if (request.nextUrl.searchParams) {
-      const newUrl = new URL(`/${defaultLocale}${pathname}`, request.url)
       newUrl.search = request.nextUrl.searchParams.toString()
+      newUrl.searchParams.set('viewport', viewport)
       return NextResponse.rewrite(newUrl)
-  }
+    }
     // e.g. incoming request is /products
     // Tell Next.js it should pretend it's /en/products
-    return NextResponse.rewrite(new URL(`/${defaultLocale}${pathname}`, request.url))
+    newUrl.searchParams.set('viewport', viewport)
+    return NextResponse.rewrite(newUrl)
   }
 }
 

@@ -55,12 +55,12 @@ export const GET_TOUR_DETAIL = `query GetTourDetail($slug: ID!, $language: Langu
                 placeName
                 image {
                   altText
-                  sourceUrl
+                  sourceUrl(size: THUMBNAIL)
                 }
               }
               icons {
                 img {
-                  sourceUrl
+                  sourceUrl(size: THUMBNAIL)
                 }
                 text
               }
@@ -92,7 +92,7 @@ export const GET_TOUR_DETAIL = `query GetTourDetail($slug: ID!, $language: Langu
         map {
           image {
             altText
-            sourceUrl
+            sourceUrl(size: MEDIUM_LARGE)
           }
           button
         }
@@ -163,12 +163,12 @@ export const GET_PROMOTION_TOUR_DETAIL = `query GetTourDetail($slug: ID!, $langu
                 placeName
                 image {
                   altText
-                  sourceUrl
+                  sourceUrl(size: THUMBNAIL)
                 }
               }
               icons {
                 img {
-                  sourceUrl
+                  sourceUrl(size: THUMBNAIL)
                 }
                 text
               }
@@ -200,7 +200,7 @@ export const GET_PROMOTION_TOUR_DETAIL = `query GetTourDetail($slug: ID!, $langu
         map {
           image {
             altText
-            sourceUrl
+            sourceUrl(size: MEDIUM_LARGE)
           }
           button
         }
@@ -295,7 +295,7 @@ export const GET_RELATED_TOUR = `query($language: LanguageCodeEnum!, $taxonomyVa
             gallery {
               altText
               title
-              sourceUrl
+              sourceUrl(size: MEDIUM_LARGE)
             }
             icons
           }
@@ -327,7 +327,7 @@ export const GET_RELATED_PROMOTION_TOUR = `query($language: LanguageCodeEnum!, $
             gallery {
               altText
               title
-              sourceUrl
+              sourceUrl(size: MEDIUM_LARGE)
             }
             icons
           }
@@ -347,7 +347,7 @@ export const GET_RANDOM_TOUR = `query ($language: LanguageCodeEnum!) {
           banner {
             gallery {
               altText
-              sourceUrl
+              sourceUrl(size: MEDIUM_LARGE)
               title
             }
             icons
@@ -372,7 +372,7 @@ export const GET_RANDOM_PROMOTION_TOUR = `query ($language: LanguageCodeEnum!) {
           banner {
             gallery {
               altText
-              sourceUrl
+              sourceUrl(size: MEDIUM_LARGE)
               title
             }
             icons

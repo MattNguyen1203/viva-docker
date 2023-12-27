@@ -2,14 +2,16 @@
 import { useRef, useState } from 'react'
 import Image from 'next/image'
 import playBtn from '@/assets/images/about/playBtn.svg'
+import LiteYouTubeEmbed from 'react-lite-youtube-embed'
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 
 const dataVideo = {
-  linkEn: 'https://www.youtube.com/embed/jR9Pqqg27gI',
-  linkFr: 'https://www.youtube.com/embed/BmVU9HNZNiA',
-  linkIt: 'https://www.youtube.com/embed/Jx5i12dY-As',
+  linkEn: 'jR9Pqqg27gI',
+  linkFr: 'BmVU9HNZNiA',
+  linkIt: 'Jx5i12dY-As',
   titleEn: 'JOURNEY TO SOUTHEAST ASIA | Asia Viva Travel',
   titleFr: 'VOYAGE EN INDOCHINE | Asia Viva Travel',
-  titleIt: 'VIAGGIO NEL SUD-EST ASIATICO | Asia Viva Travel',
+  titleIt: 'VIAGGIO NEL SUD-EST ASIATICO | Asia Viva Travel'
 }
 
 export default function AboutVideo({ data = {}, lang }) {
@@ -30,14 +32,22 @@ export default function AboutVideo({ data = {}, lang }) {
       >
         <source src={data?.video?.mediaItemUrl} type={data?.video?.mimeType} className='w-full h-full ' />
       </video> */}
-      <iframe
-        width={2000}
-        height={1000}
+      {/* <iframe
+        // width={2000}
+        // height={1000}
         controls={isPlay}
         className='md:block hidden w-full md:h-[53.125vw] about-video z-0 object-fill'
         title={lang === 'en' ? dataVideo?.titleEn : lang === 'fr' ? dataVideo?.titleFr : dataVideo?.titleIt}
-        src={lang === 'en' ? dataVideo?.linkEn : lang === 'fr' ? dataVideo?.linkFr : dataVideo?.linkIt} frameborder="0" allowfullscreen>
-      </iframe>
+        src={lang === 'en' ? dataVideo?.linkEn : lang === 'fr' ? dataVideo?.linkFr : dataVideo?.linkIt}
+        frameborder='0'
+        allowfullscreen
+      ></iframe> */}
+      <div className='w-full h-[80vh] md:h-[56.125vw] about-video z-0 object-fill flex flex-col justify-center'>
+        <LiteYouTubeEmbed
+          id={lang === 'en' ? dataVideo?.linkEn : lang === 'fr' ? dataVideo?.linkFr : dataVideo?.linkIt}
+          title={lang === 'en' ? dataVideo?.titleEn : lang === 'fr' ? dataVideo?.titleFr : dataVideo?.titleIt}
+        />
+      </div>
       {/* video for mobile */}
 
       {/* <video
@@ -54,18 +64,24 @@ export default function AboutVideo({ data = {}, lang }) {
           className='w-full h-full'
         />
       </video> */}
-      <iframe
+      
+      {/* <iframe
         width={2000}
         height={1000}
         controls={isPlay}
         className='md:hidden w-full h-[80vh] about-video z-0 object-fill'
         title={lang === 'en' ? dataVideo?.titleEn : lang === 'fr' ? dataVideo?.titleFr : dataVideo?.titleIt}
-        src={lang === 'en' ? dataVideo?.linkEn : lang === 'fr' ? dataVideo?.linkFr : dataVideo?.linkIt} frameborder="0" allowfullscreen>
-      </iframe>
-      <div ref={imageRef} className={`${isPlay && 'hidden'} absolute top-0 left-0 z-10 w-full h-full`}>
+        src={lang === 'en' ? dataVideo?.linkEn : lang === 'fr' ? dataVideo?.linkFr : dataVideo?.linkIt}
+        frameborder='0'
+        allowfullscreen
+      ></iframe> */}
+      <div
+        ref={imageRef}
+        className={`${isPlay && 'hidden'} absolute top-0 left-0 z-10 w-full h-full`}
+      >
         <Image
-          src={data?.thumbnail?.sourceUrl || "https://res.cloudinary.com/asiavivatravel/images/v1699861252/Cascade-de-Thac-Bac-a-Sapa-Vietnam-1/Cascade-de-Thac-Bac-a-Sapa-Vietnam-1.jpg?_i=AA"}
-          alt={data?.thumbnail?.altText || "thumb"}
+          src={data?.thumbnail?.sourceUrl}
+          alt={data?.thumbnail?.altText || 'thumb'}
           width={1000}
           height={1000}
           priority
@@ -73,8 +89,8 @@ export default function AboutVideo({ data = {}, lang }) {
         />
 
         <Image
-          src={data?.thumbnailMb?.sourceUrl || data?.thumbnailmb?.sourceUrl || "https://res.cloudinary.com/asiavivatravel/images/v1699861252/Cascade-de-Thac-Bac-a-Sapa-Vietnam-1/Cascade-de-Thac-Bac-a-Sapa-Vietnam-1.jpg?_i=AA"}
-          alt={data?.thumbnailMb?.altText || data?.thumbnailmb?.altText || "thumb"}
+          src={data?.thumbnailMb?.sourceUrl || data?.thumbnailmb?.sourceUrl}
+          alt={data?.thumbnailMb?.altText || data?.thumbnailmb?.altText || 'thumb'}
           width={1000}
           height={1000}
           priority

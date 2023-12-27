@@ -15,6 +15,7 @@ import { GET_DATA_FORM_BOOKTOUR } from '@/graphql/formBookTour/queries'
 import {
   GET_DATA_iNSEPECT,
   GET_HOME_PAGE,
+  GET_HOME_PAGE_MOBILE,
   GET_INITIAL_FILTER,
   GET_META_DATA,
   GET_NEXT_STEP
@@ -44,6 +45,9 @@ export async function generateMetadata({ params: { lang } }) {
 export default async function page({ params, searchParams }) {
   const lang = params?.lang
   const language = lang?.toUpperCase() || 'EN'
+
+  // const isMobile = searchParams?.viewport === 'mobile'
+
 
   const [nextStep, data, dataBookTour, dataInit, budgets, durations, styles, countries] = await Promise.all([
     fetchData(GET_NEXT_STEP, { language }),
@@ -142,7 +146,10 @@ export default async function page({ params, searchParams }) {
           <TouristRepresentative data={representative} />
         </div>
         <div>
-          <AboutVideo data={aboutVideo} lang={lang}/>
+          <AboutVideo
+            data={aboutVideo}
+            lang={lang}
+          />
         </div>
         <div className='review-wrapper'>
           <Review
