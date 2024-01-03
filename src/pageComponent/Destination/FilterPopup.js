@@ -18,9 +18,9 @@ import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 import { sortBy } from 'lodash'
 import Image from 'next/image'
-import { useParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
-function FilterPopup() {
+function FilterPopup({ lang, slug }) {
   // const refLink = useRef(null)
   const searchRef = useRef()
   const popUp = useRef(null)
@@ -30,8 +30,6 @@ function FilterPopup() {
   const [duration, setDuration] = useState('')
   const [budget, setBudget] = useState('')
   const router = useRouter()
-
-  const { lang, slug } = useParams()
 
   const { data: dataTaxonomiesStyleTour } = useQuery(DATA_TAXONOMIES_TOUR_STYLE_GQL, {
     variables: { language: lang?.toUpperCase() }

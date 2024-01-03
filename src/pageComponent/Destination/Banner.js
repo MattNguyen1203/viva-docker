@@ -34,7 +34,7 @@ const Banner = async ({ slug, lang }) => {
           </span>
 
           <div className='filter-tour hidden md:flex gap-x-[1.75vw] ml-auto mr-auto mt-[1.94vw] bg-white w-max py-[1.5vw] pl-[2.87vw] pr-[2vw] rounded-[1.125vw]'>
-            <FilterBanner />
+            <FilterBanner lang={lang} slug={slug} />
           </div>
           <ScrollNextSection lang={lang} />
         </div>

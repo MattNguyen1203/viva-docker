@@ -1,26 +1,25 @@
 'use client'
 
 import bgPc from '@/assets/images/bgBookTourPc.jpg'
-import Image from 'next/image'
-import { Formik, Field, ErrorMessage, Form } from 'formik'
-import * as Yup from 'yup'
-import TextFiledWrapper from '../FormBookTour/TextField'
-import SelectField from '../FormBookTour/SelectField'
-import Button from './Button'
-import { gql, useMutation } from '@apollo/client'
-import { useRef, useState } from 'react'
-import Notification from './Notification'
+import { FORM_IDS } from '@/configs/global-config'
 import { useClickOutside } from '@/helpers/customHooks'
+import { gql, useMutation } from '@apollo/client'
+import Dialog from '@mui/material/Dialog'
+import DialogContent from '@mui/material/DialogContent'
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
-import { TextareaAutosize } from '@mui/base/TextareaAutosize';
-import ReCAPTCHA from 'react-google-recaptcha'
-import addYears from 'date-fns/addYears'
-import { FORM_IDS } from '@/configs/global-config'
-import { useParams, usePathname } from 'next/navigation'
 import { format } from 'date-fns'
+import addYears from 'date-fns/addYears'
+import { ErrorMessage, Field, Form, Formik } from 'formik'
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { useRef, useState } from 'react'
+import ReCAPTCHA from 'react-google-recaptcha'
+import * as Yup from 'yup'
+import SelectField from '../FormBookTour/SelectField'
+import TextFiledWrapper from '../FormBookTour/TextField'
+import Button from './Button'
+import Notification from './Notification'
 
 // queries form
 const SUBMIT_FORM = gql`

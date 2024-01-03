@@ -12,6 +12,8 @@ function TravelStyleMb({ data, title, lang }) {
         src={bgStyle}
         quality={85}
         fill
+        priority
+        loading='eager'
         className='absolute w-full h-auto object-cover top-0 z-[-1]'
       />
       <h2 className='heading-1 pb-[5.33vw] border-b border-solid border-[#ccc] text-center mx-[4.27vw]'>{title}</h2>

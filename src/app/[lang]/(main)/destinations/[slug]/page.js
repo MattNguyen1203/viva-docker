@@ -39,7 +39,7 @@ function page({ params: { lang, slug } }) {
         lang={lang}
       />
       <Suspense fallback={<SectionActions.Skeleton />}>
-        <FilterPopup />
+        <FilterPopup lang={lang} slug={slug} />
       </Suspense>
 
       <SectionActions

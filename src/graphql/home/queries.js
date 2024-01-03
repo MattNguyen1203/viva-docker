@@ -358,7 +358,7 @@ const GET_HOME_PAGE_MOBILE = `query getHomePageData($id:ID!) {
           }
           thumbnailmb {
             altText
-            sourceUrl(size: MEDIUM)
+            sourceUrl(size: MEDIUM_LARGE)
           }
         }
         customerReview {
@@ -719,6 +719,53 @@ const GET_DATA_iNSEPECT = `query getDataInsepect(
   }
 }`
 
+const GET_DATA_iNSEPECT_MOBILE = `query getDataInsepect(
+  $language: LanguageCodeEnum!
+  $categorySlug: [String!] 
+  $destinationSlug: [String!]
+) {
+posts(
+  where: {
+    taxQuery:
+    {
+      taxArray: [
+      { taxonomy: CATEGORY, operator: IN, terms: $categorySlug, field: SLUG },
+      { taxonomy: COUNTRIES, operator: IN, terms: $destinationSlug, field: SLUG }]
+    }
+}
+) {
+  nodes {
+    translation(language: $language) {
+      id
+      title
+      slug
+      featuredImage{
+        node{
+          sourceUrl(size: MEDIUM)
+          altText
+          title
+        }
+      }
+      blogdetail {
+        heading
+        time
+      }
+      categories {
+        nodes {
+          name
+          slug
+        }
+      }
+      countries {
+        nodes{
+          name
+        }
+      }
+    }
+  }
+}
+}`
+
 const GET_INITIAL_FILTER = `
 query($language : LanguageCodeFilterEnum!){
   allCountries (where:{language: $language}){
@@ -738,4 +785,16 @@ query($language : LanguageCodeFilterEnum!){
   }
 }
 `
-export { DATA_HEADER, GET_HOME_PAGE, GET_HOME_PAGE_MOBILE, GET_NEXT_STEP, GET_FOOTER, GET_META_DATA, GET_SOCIAL_MOBILE, GET_INFO_CONTACT, GET_DATA_iNSEPECT, GET_INITIAL_FILTER }
+export {
+  DATA_HEADER,
+  GET_HOME_PAGE,
+  GET_HOME_PAGE_MOBILE,
+  GET_NEXT_STEP,
+  GET_FOOTER,
+  GET_META_DATA,
+  GET_SOCIAL_MOBILE,
+  GET_INFO_CONTACT,
+  GET_DATA_iNSEPECT,
+  GET_INITIAL_FILTER,
+  GET_DATA_iNSEPECT_MOBILE
+}

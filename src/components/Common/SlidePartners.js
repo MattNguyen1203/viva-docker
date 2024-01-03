@@ -4,6 +4,9 @@ import { Autoplay, FreeMode } from 'swiper/modules'
 
 import Image from 'next/image'
 
+import 'swiper/css'
+import 'swiper/css/free-mode'
+
 function SlidePartners({ data: slidePartners, reverse }) {
   const dataSlide = slidePartners?.concat(slidePartners)?.concat(slidePartners)
   return (

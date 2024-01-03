@@ -1,10 +1,13 @@
 'use client'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination, FreeMode } from 'swiper/modules'
-import { useRef, useState } from 'react'
-import TourItem from './TourItem'
 import vw from '@/helpers/convertToVw'
-import { Skeleton } from '@mui/material'
+import { useRef, useState } from 'react'
+import { FreeMode, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import TourItem from './TourItem'
+
+import 'swiper/css'
+import 'swiper/css/free-mode'
+import 'swiper/css/pagination'
 
 function SlideTour({ data, slug, isLoading, lang }) {
   const [indexSlider, setIndexSlider] = useState(0)

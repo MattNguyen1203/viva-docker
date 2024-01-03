@@ -11,11 +11,9 @@ import { useMediaQuery } from '@mui/material'
 import { useQueryState } from 'next-usequerystate'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
 import { Suspense } from 'react'
 
-function BestTour({ button, finalData, dictionary, dataFilter }) {
-  const { lang } = useParams()
+function BestTour({ button, finalData, dictionary, dataFilter, lang }) {
   const [destination] = useQueryState('destination')
   const [budget] = useQueryState('budget')
   const [duration] = useQueryState('duration')
@@ -88,6 +86,7 @@ function BestTour({ button, finalData, dictionary, dataFilter }) {
             <FilterTour
               dataFilter={dataFilter}
               className={'filterMobile'}
+              lang={lang}
             />
           </Suspense>
         </div>

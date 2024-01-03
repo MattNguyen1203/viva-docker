@@ -4,6 +4,10 @@ import { Pagination, FreeMode } from 'swiper/modules'
 import { useRef, useState } from 'react'
 import ReviewItem from './ReviewItem'
 
+import 'swiper/css'
+import 'swiper/css/free-mode'
+import 'swiper/css/pagination'
+
 function SlideReview({ data, lang }) {
   const [indexSlider, setIndexSlider] = useState(0)
   const swiperRef = useRef()

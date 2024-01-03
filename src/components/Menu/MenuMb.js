@@ -1,19 +1,19 @@
 'use client'
-import Image from 'next/image'
-import { useRef, useState } from 'react'
-import logo from '@/assets/images/logo.svg'
-import Link from 'next/link'
 import iconDropdown from '@/assets/images/arrow-up.svg'
-import VoucherItem from '../Common/VoucherItem'
-import TourItem from '../Common/TourItem'
-import Button from '../Common/Button'
-import ServiceItem from './RecomendServices/ServiceItem'
-import SelectLang from '../Language/SelectLang'
 import fbIcon from '@/assets/images/facebook.svg'
-import linkedIcon from '@/assets/images/linkedin.svg'
 import instarIcon from '@/assets/images/instar.svg'
+import linkedIcon from '@/assets/images/linkedin.svg'
+import logo from '@/assets/images/logo.svg'
 import ytbIcon from '@/assets/images/youtube.svg'
-import InputSearchMb from '../Common/InputSearchMb'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRef, useState } from 'react'
+import Button from '../Common/Button'
+import SelectLang from '../Language/SelectLang'
+import ServiceItem from './RecomendServices/ServiceItem'
+
+import dynamic from 'next/dynamic'
+const InputSearchMb = dynamic(() => import('../Common/InputSearchMb'))
 
 function MenuMb({
   onCloseMenu,
@@ -26,7 +26,8 @@ function MenuMb({
   dataHome,
   titleAboutUs,
   contactInfo,
-  socialMobile
+  socialMobile,
+  dataFilter
 }) {
   const [selected, setSelected] = useState(null)
   const contentEle = useRef()
@@ -65,7 +66,7 @@ function MenuMb({
             />
           </Link>
           <div className='flex-1 hidden max-lg:block'>
-            <InputSearchMb lang={lang} />
+            <InputSearchMb lang={lang} dataFilter={dataFilter} />
           </div>
           <div
             className='cursor-pointer close'

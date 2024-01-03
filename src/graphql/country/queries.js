@@ -16,7 +16,7 @@ query country($language: LanguageCodeFilterEnum){
           sourceUrl
         }
         thumb {
-          sourceUrl
+          sourceUrl(size: MEDIUM)
         }
       }
     }

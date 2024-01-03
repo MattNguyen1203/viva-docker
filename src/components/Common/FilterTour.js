@@ -10,7 +10,6 @@ import Select from '@mui/material/Select'
 import { sortBy } from 'lodash'
 import { useQueryState } from 'next-usequerystate'
 import Image from 'next/image'
-import { useParams, useSearchParams } from 'next/navigation'
 
 const handleSort = (fn = []) => {
   let clone = [...fn]
@@ -47,9 +46,9 @@ const sortStyle = (arr) => {
 function FilterTour({
   dataFilter,
   travelStyleSlug,
-  className
+  className,
+  lang
 }) {
-  const { lang } = useParams()
   const [destination, setDestination] = useQueryState('destination')
   const [budget, setBudget] = useQueryState('budget')
   const [duration, setDuration] = useQueryState('duration')
@@ -90,7 +89,6 @@ function FilterTour({
     }
   })
 
-  const searchParams = useSearchParams()
 
   return (
     <div

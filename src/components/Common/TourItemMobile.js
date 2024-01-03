@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { iconsTour } from '@/lib/Icons'
 import { Skeleton } from '@mui/material'
+import imgTour from '@/assets/images/tour.jpg'
 
 function TourItemMobile({ data, lang, loading }) {
   const tourData = data?.translation?.tourDetail?.banner || data?.tourDetail?.banner
@@ -42,11 +43,7 @@ function TourItemMobile({ data, lang, loading }) {
           <div className='relative w-full h-full'>
             <Image
               alt={tourData?.gallery ? tourData?.gallery[0]?.altText || 'img tour' : 'img tour'}
-              src={
-                tourData?.gallery
-                  ? tourData?.gallery[0]?.sourceUrl
-                  : 'https://viva-cms-en.okhub.tech/wp-content/uploads/2023/10/Tourists-in-Angkor-Wat-01-scaled.jpg'
-              }
+              src={tourData?.gallery?.[0]?.sourceUrl || imgTour}
               quality={85}
               width={300}
               height={300}

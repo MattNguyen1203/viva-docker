@@ -1,11 +1,13 @@
 'use client'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination, FreeMode } from 'swiper/modules'
-import { useRef, useState } from 'react'
-import TourItem from './TourItem'
-import vw from '@/helpers/convertToVw'
-import { Skeleton } from '@mui/material'
 import VoucherItem from '@/components/Common/VoucherItem'
+import vw from '@/helpers/convertToVw'
+import { useRef, useState } from 'react'
+import { FreeMode, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import 'swiper/css'
+import 'swiper/css/free-mode'
+import 'swiper/css/pagination'
 
 function SlideVoucher({ data, slug, isLoading, lang, dictionary }) {
   const [indexSlider, setIndexSlider] = useState(0)

@@ -2,7 +2,6 @@
 import Button from '@/components/Common/Button'
 import TourItem from '@/components/Common/TourItem'
 import Link from 'next/link'
-import { useParams, useRouter } from 'next/navigation'
 
 function BestSellerTour({ data, lang, dataCheckVisa }) {
   const dataTour = data?.data?.bestSeller?.tours?.nodes

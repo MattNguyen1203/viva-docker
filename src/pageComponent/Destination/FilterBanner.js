@@ -4,22 +4,21 @@ import searchIcon from '@/assets/images/search-normal.svg'
 import styleIcon from '@/assets/images/style-travel.svg'
 import wallet from '@/assets/images/wallet.svg'
 import Button from '@/components/Common/Button'
-import { DATA_TAXONOMIES_BUDGET, DATA_TAXONOMIES_BUDGET_GQL, DATA_TAXONOMIES_COUNTRY, DATA_TAXONOMIES_COUNTRY_GQL, DATA_TAXONOMIES_DURATION, DATA_TAXONOMIES_DURATION_GQL, DATA_TAXONOMIES_TOUR_STYLE, DATA_TAXONOMIES_TOUR_STYLE_GQL } from '@/graphql/filter/queries'
-import { gql, useQuery } from '@apollo/client'
+import { DATA_TAXONOMIES_BUDGET_GQL, DATA_TAXONOMIES_COUNTRY_GQL, DATA_TAXONOMIES_DURATION_GQL, DATA_TAXONOMIES_TOUR_STYLE_GQL } from '@/graphql/filter/queries'
+import { useQuery } from '@apollo/client'
 import { createTheme } from '@mui/material'
 import FormControl from '@mui/material/FormControl'
 import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 import { sortBy } from 'lodash'
 import Image from 'next/image'
-import { useParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-function FilterBanner() {
+function FilterBanner({ lang, slug }) {
   const [travelStyle, setTravelStyle] = useState('')
   const [duration, setDuration] = useState('')
   const [budget, setBudget] = useState('')
   const router = useRouter()
-  const { lang, slug } = useParams()
 
   const { data: dataTaxonomiesStyleTour } = useQuery(DATA_TAXONOMIES_TOUR_STYLE_GQL, {
     variables: { language: lang?.toUpperCase() }
@@ -37,14 +36,11 @@ function FilterBanner() {
     variables: { language: lang?.toUpperCase() }
   })
 
-
-
   // ==== Get name filter ====
   const arrDataTaxonomiesBudget = dataTaxonomiesBudget?.allBudget?.nodes
   const arrDataTaxonomiesDuration = dataTaxonomiesDuration?.allDuration?.nodes
   const arrDataTaxonomiesStyleTour = dataTaxonomiesStyleTour?.allTourStyle?.nodes
   const arrDataTaxonomiesCountry = dataTaxonomiesCountry?.allCountries?.nodes
-
 
   const dataFilter = {
     style: arrDataTaxonomiesStyleTour,
@@ -66,7 +62,7 @@ function FilterBanner() {
   const handleSort = (fn = []) => {
     let clone = [...fn]
     if (clone?.length > 0) {
-      clone = sortBy(clone, item => {
+      clone = sortBy(clone, (item) => {
         return +item?.name.split('-')[0]
       })
     }
@@ -76,31 +72,29 @@ function FilterBanner() {
 
   const arrDuration = handleSort(dataFilter?.duration)
 
-
-  const arrStyle = sortBy(dataFilter?.style, item => item?.banner?.travelStyleInfo?.priority)
+  const arrStyle = sortBy(dataFilter?.style, (item) => item?.banner?.travelStyleInfo?.priority)
 
   function handleSearch(e) {
     const arrParams = []
     if (travelStyle || duration || budget) {
-
       if (travelStyle) {
-        arrParams.push({ 'style': travelStyle })
+        arrParams.push({ style: travelStyle })
       }
       if (duration) {
-        arrParams.push({ 'duration': duration })
+        arrParams.push({ duration: duration })
       }
       if (budget) {
-        arrParams.push({ 'budget': budget })
+        arrParams.push({ budget: budget })
       }
-      const resultObject = {};
-      arrParams.forEach(obj => {
+      const resultObject = {}
+      arrParams.forEach((obj) => {
         for (const key in obj) {
           if (obj.hasOwnProperty(key)) {
-            resultObject[key] = obj[key];
+            resultObject[key] = obj[key]
           }
         }
-      });
-      const queryString = new URLSearchParams(resultObject).toString();
+      })
+      const queryString = new URLSearchParams(resultObject).toString()
       let link = `/search?&country=${slug}&${queryString}`
       if (lang !== 'en') {
         link = `/${lang}/search?&country=${slug}&${queryString}`
@@ -173,7 +167,7 @@ function FilterBanner() {
                     lineHeight: '1.5',
                     marginLeft: '4px'
                   }
-                },
+                }
               }}
             >
               <Select
@@ -183,7 +177,7 @@ function FilterBanner() {
                 inputprops={{ 'aria-label': 'Without label' }}
                 renderValue={() => {
                   let name = option?.style
-                  if (travelStyle !== "") {
+                  if (travelStyle !== '') {
                     const nameCountry = arrStyle?.find((item, index) => item?.slug === travelStyle)
                     name = nameCountry?.name
                   }
@@ -204,7 +198,10 @@ function FilterBanner() {
                 }}
               >
                 {arrStyle?.map((item, index) => (
-                  <MenuItem value={item?.slug} key={index}>
+                  <MenuItem
+                    value={item?.slug}
+                    key={index}
+                  >
                     <span className='md:text-[1.0625vw] md:font-[500] leading-[130%] text-textColor text-[2.93333vw] font-[400]'>
                       {item?.name}
                     </span>
@@ -241,7 +238,7 @@ function FilterBanner() {
                     lineHeight: '1.5',
                     marginLeft: '4px'
                   }
-                },
+                }
               }}
             >
               <Select
@@ -251,9 +248,9 @@ function FilterBanner() {
                 inputprops={{ 'aria-label': 'Without label' }}
                 renderValue={() => {
                   let name = option?.duration
-                  if (duration !== "") {
+                  if (duration !== '') {
                     const nameCountry = arrDuration?.find((item, index) => item?.name === duration)
-                    name = nameCountry?.name + " " + option?.day
+                    name = nameCountry?.name + ' ' + option?.day
                   }
                   return name
                 }}
@@ -272,7 +269,10 @@ function FilterBanner() {
                 }}
               >
                 {arrDuration?.map((item, index) => (
-                  <MenuItem value={item?.name} key={index}>
+                  <MenuItem
+                    value={item?.name}
+                    key={index}
+                  >
                     <span className='md:text-[1.0625vw] md:font-[500] leading-[130%] text-textColor text-[2.93333vw] font-[400]'>
                       {item?.name} {option.day}
                     </span>
@@ -309,7 +309,7 @@ function FilterBanner() {
                     lineHeight: '1.5',
                     marginLeft: '4px'
                   }
-                },
+                }
               }}
             >
               <Select
@@ -319,9 +319,9 @@ function FilterBanner() {
                 inputprops={{ 'aria-label': 'Without label' }}
                 renderValue={() => {
                   let name = option?.budget
-                  if (budget !== "") {
+                  if (budget !== '') {
                     const nameCountry = arrBudget?.find((item, index) => item?.name === budget)
-                    name = nameCountry?.name + " " + option.price
+                    name = nameCountry?.name + ' ' + option.price
                   }
                   return name
                 }}
@@ -340,7 +340,10 @@ function FilterBanner() {
                 }}
               >
                 {arrBudget?.map((item, index) => (
-                  <MenuItem value={item?.name} key={index}>
+                  <MenuItem
+                    value={item?.name}
+                    key={index}
+                  >
                     <span className='md:text-[1.0625vw] md:font-[500] leading-[130%] text-textColor text-[2.93333vw] font-[400]'>
                       {item?.name} {option.price}
                     </span>
