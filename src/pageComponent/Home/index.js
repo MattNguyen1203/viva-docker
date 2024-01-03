@@ -80,6 +80,7 @@ export default async function Home({
             button={button}
             dictionary={dictionary}
             dataFilter={dataFilter}
+            lang={lang}
           />
           <TravelStyle
             data={travelStyleList?.travelStyleList}

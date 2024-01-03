@@ -1,11 +1,14 @@
 'use client'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination, FreeMode } from 'swiper/modules'
 import { useRef, useState } from 'react'
-import Link from 'next/link'
-import TourItem from './TourItem'
+import { FreeMode, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import BlogItem from './BlogItem'
-import RecommendedServiceItem from '@/components/Common/RecommendedServiceItem'
+import TourItem from './TourItem'
+
+import 'swiper/css'
+import 'swiper/css/free-mode'
+import 'swiper/css/pagination'
+
 
 function BestSeller({ isBlogItem, listBlog, lang }) {
   const [indexSlider, setIndexSlider] = useState(0)

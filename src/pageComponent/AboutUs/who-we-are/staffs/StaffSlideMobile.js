@@ -3,6 +3,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import StaffItem from './StaffItem'
 import { FreeMode } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/free-mode'
 
 export default function StaffSlideMobile({ staffData }) {
   return (

@@ -1,24 +1,22 @@
 'use client'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
-import icon from '@/assets/images/route-square.svg'
 import callIcon from '@/assets/images/call-calling.svg'
 import directIcon from '@/assets/images/direct.svg'
+import icon from '@/assets/images/route-square.svg'
+import Image from 'next/image'
+import { useRef } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import 'swiper/css'
 
 function SlideRepresentMb({ data }) {
-  const [indexSlider, setIndexSlider] = useState(0)
   const slideData = data
   const swiperRef = useRef()
-  const handleSlideChange = (swiper) => {
-    setIndexSlider(swiper.activeIndex)
-  }
+
   return (
     <div className='box-border relative'>
       <Swiper
         slidesPerView={2.1}
         spaceBetween={0}
-        onSlideChange={handleSlideChange}
         onBeforeInit={(swiper) => {
           swiperRef.current = swiper
         }}

@@ -11,7 +11,7 @@ async function index({ lang, slug, dictionary }) {
         slug={slug}
         lang={lang}
       />
-      <FilterPopup />
+      <FilterPopup lang={lang} slug={slug} />
       <SectionActions lang={lang} slug={slug} />
       <SlideDestination
         lang={lang}

@@ -1,26 +1,38 @@
 'use client'
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
 import logo from '@/assets/images/VIVA-LOGO-02.png'
-import bookTourIcon from '@/assets/images/bookTourIcon.svg'
-import SelectLang from '../Language/SelectLang'
-import MenuDestinations from '@/components/Menu/Destinations'
-import MenuStyle from '@/components/Menu/TravelStyle'
-import MenuRcmService from '@/components/Menu/RecomendServices'
 import bars from '@/assets/images/bars.svg'
-import InputSearchMb from './InputSearchMb'
-import MenuAbout from '../Menu/AboutUs/MenuAbout'
-import MenuMb from '../Menu/MenuMb'
+import bookTourIcon from '@/assets/images/bookTourIcon.svg'
 import planeF from '@/assets/images/planeF.svg'
-import HotDeal from './HotDeal'
-import BookTour from './BookTour'
-import ModalCustom from './ModalCustom'
-import Button from './Button'
-import { usePathname } from 'next/navigation'
+import MenuDestinations from '@/components/Menu/Destinations'
+// import MenuRcmService from '@/components/Menu/RecomendServices'
+// import MenuStyle from '@/components/Menu/TravelStyle'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
+import SelectLang from '../Language/SelectLang'
+// import MenuAbout from '../Menu/AboutUs/MenuAbout'
+// import MenuMb from '../Menu/MenuMb'
+// import BookTour from './BookTour'
+// import InputSearchMb from './InputSearchMb'
+// import ModalCustom from './ModalCustom'
 import { createTheme, useMediaQuery } from '@mui/material'
+import { usePathname } from 'next/navigation'
 import { DataProvider } from '../Menu/DataContextMenu'
+import Button from './Button'
+
+import dynamic from 'next/dynamic'
+const ModalCustom = dynamic(() => import('./ModalCustom'))
+
+const MenuStyle = dynamic(() => import('@/components/Menu/TravelStyle'))
+
+const MenuAbout = dynamic(() => import('../Menu/AboutUs/MenuAbout'))
+
+const MenuMb = dynamic(() => import('../Menu/MenuMb'))
+const BookTour = dynamic(() => import('./BookTour'))
+const InputSearchMb = dynamic(() => import('./InputSearchMb'))
+const MenuRcmService = dynamic(() => import('@/components/Menu/RecomendServices'))
+
 
 const theme = createTheme({
   breakpoints: {
@@ -38,10 +50,10 @@ export default function Navbar({
   travelStylesList,
   rcmServicesList,
   hotDeals,
-  listVoucher,
   dataAboutUs,
   dataBookTour,
-  contactInfo
+  contactInfo,
+  dataFilter
 }) {
   const refMb = useRef()
   const refMenu = useRef()
@@ -243,16 +255,6 @@ export default function Navbar({
                 // onClick={handleCloseMenu}
               >
                 <span>{dataHome?.nav3}</span>
-
-                {/* <div className='hidden menu-item menu-item3'>
-                  <HotDeal
-                    hotDeals={hotDeals}
-                    listVoucher={listVoucher}
-                    menu
-                    lang={lang}
-                    onCloseMenu={handleCloseMenu}
-                  />
-                </div> */}
                 <span className='icon-hot absolute top-[-0.75vw] right-[-0.375vw] px-[0.625vw] rounded-[99px] bg-primaryColor text-[0.75vw]'>
                   {hot}
                 </span>
@@ -324,6 +326,7 @@ export default function Navbar({
               <InputSearchMb
                 lang={lang}
                 onCloseNav={handleCloseNav}
+                dataFilter={dataFilter}
               />
             </DataProvider>
           </div>
@@ -354,6 +357,7 @@ export default function Navbar({
             rcmServicesList={rcmServicesList}
             menu
             contactInfo={contactInfo}
+            dataFilter={dataFilter}
           />
         </DataProvider>
       </div>

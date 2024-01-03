@@ -1,11 +1,14 @@
 'use client'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination, EffectCoverflow, Navigation } from 'swiper/modules'
-import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
-import icon from '@/assets/images/route-square.svg'
 import callIcon from '@/assets/images/call-calling.svg'
 import directIcon from '@/assets/images/direct.svg'
+import icon from '@/assets/images/route-square.svg'
+import Image from 'next/image'
+import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 function SlideRepresent({ data }) {
   // const [indexSlider, setIndexSlider] = useState(0)

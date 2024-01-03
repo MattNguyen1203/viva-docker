@@ -4,6 +4,9 @@ import { Pagination } from 'swiper/modules'
 import { useRef, useState } from 'react'
 import Image from 'next/image'
 
+import 'swiper/css'
+import 'swiper/css/pagination'
+
 function SlideDayTour({ data }) {
   const [indexSlider, setIndexSlider] = useState(0)
   const swiperRef = useRef()

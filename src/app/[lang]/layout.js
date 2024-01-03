@@ -15,7 +15,7 @@ export function generateViewport() {
 
 export const metadata = {
   other: {
-    'google-site-verification': '3Aim5tZRr39Pzh_cf54NCK_Rgx80kLtJp_ggnUkeL3Q'
+    'google-site-verification': '3Aim5tZRr39Pzh_cf54NCK_Rgx80kLtJp_ggnUkeL3Q',
   }
 }
 

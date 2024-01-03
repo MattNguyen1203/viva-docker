@@ -14,6 +14,7 @@ import {
 import { GET_DATA_FORM_BOOKTOUR } from '@/graphql/formBookTour/queries'
 import {
   GET_DATA_iNSEPECT,
+  GET_DATA_iNSEPECT_MOBILE,
   GET_HOME_PAGE,
   GET_HOME_PAGE_MOBILE,
   GET_INITIAL_FILTER,
@@ -49,11 +50,11 @@ export default async function page({ params, searchParams }) {
   const lang = params?.lang
   const language = lang?.toUpperCase() || 'EN'
 
-  // const isMobile = searchParams?.viewport === 'mobile'
+  const isMobile = searchParams?.viewport === 'mobile'
 
   const [nextStep, data, dataBookTour, dataInit, budgets, durations, styles, countries] = await Promise.all([
     fetchData(GET_NEXT_STEP, { language }),
-    fetchData(GET_HOME_PAGE, { id: LANGUAGE_IDS[lang] }),
+    fetchData(isMobile ? GET_HOME_PAGE_MOBILE : GET_HOME_PAGE, { id: LANGUAGE_IDS[lang] }),
     fetchData(GET_DATA_FORM_BOOKTOUR, { id: LANGUAGE_BOOK_IDS[lang], language }),
     fetchData(GET_INITIAL_FILTER, { language }),
 
@@ -71,7 +72,7 @@ export default async function page({ params, searchParams }) {
 
   const categorySlug = arrayCateInit.filter((item, index) => item !== 'blog')
 
-  const res = await fetchData(GET_DATA_iNSEPECT, { language, categorySlug, destinationSlug: arrayDesInit })
+  const res = await fetchData(isMobile ? GET_DATA_iNSEPECT_MOBILE : GET_DATA_iNSEPECT, { language, categorySlug, destinationSlug: arrayDesInit })
 
   const finalData = data?.data?.page?.home
 
@@ -141,6 +142,7 @@ export default async function page({ params, searchParams }) {
               button={button}
               dictionary={dictionary}
               dataFilter={dataFilter}
+              lang={lang}
             />
           </Suspense>
 

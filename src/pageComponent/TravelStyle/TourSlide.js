@@ -131,6 +131,7 @@ function TourSlide({ lang, slug, tourStyleName, dictionary }) {
               // onSelectDuration={(data) => setDuration(data)}
               travelStyleSlug={slug}
               className={'travelStyle-Mb'}
+              lang={lang}
             />
           </Suspense>
         </div>

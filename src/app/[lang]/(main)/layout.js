@@ -1,13 +1,13 @@
 import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry'
 
 // Swiper
-import 'swiper/css'
-import 'swiper/css/free-mode'
-import 'swiper/css/grid'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/scrollbar'
-import 'swiper/css/thumbs'
+// import 'swiper/css'
+// import 'swiper/css/free-mode'
+// import 'swiper/css/grid'
+// import 'swiper/css/navigation'
+// import 'swiper/css/pagination'
+// import 'swiper/css/scrollbar'
+// import 'swiper/css/thumbs'
 // Aos
 import 'aos/dist/aos.css'
 // style css
@@ -32,6 +32,7 @@ import { GET_LIST_TRAVEL_STYLE_NAME } from '@/graphql/travelStyle/queries'
 import SearchButton from '@/pageComponent/Home/SearchButton'
 import '@/scss/main.scss'
 import { getDictionary } from '@/get-dictionary'
+import { DATA_TAXONOMIES_BUDGET_GQL_SERVER, DATA_TAXONOMIES_COUNTRY_GQL_SERVER, DATA_TAXONOMIES_DURATION_GQL_SERVER, DATA_TAXONOMIES_TOUR_STYLE_GQL_SERVER } from '@/graphql/filter/queries'
 
 // const IDS = {
 //   en: '65717866bfb79148e59af6da',
@@ -48,7 +49,6 @@ const linkChatEn = 'https://embed.tawk.to/65717866bfb79148e59af6da/1hh1jskkj'
 const linkChatFr = 'https://embed.tawk.to/6551cf91958be55aeaaefe7b/1hf3p5kpr'
 const linkChatIt = 'https://embed.tawk.to/6551cfd4958be55aeaaefe8f/1hf3p7lvq'
 
-
 export default async function MainLayout({ children, params }) {
   const [
     data,
@@ -62,7 +62,11 @@ export default async function MainLayout({ children, params }) {
     rtRes,
     rvRes,
     dictionary,
-    lgRes
+    lgRes,
+    budgets,
+    durations,
+    styles,
+    countries
   ] = await Promise.all([
     fetchData(DATA_HEADER, { id: LANGUAGE_IDS[params?.lang] }),
     fetchData(GET_DATA_FORM_BOOKTOUR, { id: LANGUAGE_BOOK_IDS?.[params?.lang], language: params?.lang?.toUpperCase() }),
@@ -77,9 +81,13 @@ export default async function MainLayout({ children, params }) {
     fetchData(GET_DATA_MENU_RT, { language: params?.lang?.toUpperCase() }),
     fetchData(GET_DATA_MENU_RV, { language: params?.lang?.toUpperCase() }),
     getDictionary(params?.lang),
-    fetchData(DATA_MENU_LEGACY_QUERY,{language:params?.lang?.toUpperCase() })
+    fetchData(DATA_MENU_LEGACY_QUERY, { language: params?.lang?.toUpperCase() }),
+    fetchData(DATA_TAXONOMIES_BUDGET_GQL_SERVER, { language: params?.lang?.toUpperCase() }),
+    fetchData(DATA_TAXONOMIES_DURATION_GQL_SERVER, { language: params?.lang?.toUpperCase() }),
+    fetchData(DATA_TAXONOMIES_TOUR_STYLE_GQL_SERVER, { language: params?.lang?.toUpperCase() }),
+    fetchData(DATA_TAXONOMIES_COUNTRY_GQL_SERVER, { language: params?.lang?.toUpperCase() })
   ])
-  
+
   const dataHome = data?.data?.page?.home
   //get header of hotDeal
   const hotDeals = result?.data?.page?.translation?.hotDeals
@@ -90,9 +98,17 @@ export default async function MainLayout({ children, params }) {
 
   const dataPopupVoucher = await fetchData(DATA_POPUP_VOUCHER, { language: params.lang?.toUpperCase() })
   const isPopup = dataPopupVoucher?.data?.page?.translation?.popupPromotion?.thumbPopup === null
+
+  const dataFilter = {
+    countries: countries?.data?.allCountries?.nodes,
+    style: styles?.data?.allTourStyle?.nodes,
+    budget: budgets?.data?.allBudget?.nodes,
+    duration: durations?.data?.allDuration?.nodes
+  }
+
   return (
     <ThemeRegistry>
-        <ApolloClientProvider>
+      <ApolloClientProvider>
         <Navbar
           dictionary={dictionary}
           socialMobile={socialMobile}
@@ -110,9 +126,15 @@ export default async function MainLayout({ children, params }) {
             rvRes: rvRes?.data?.page?.translation,
             lgRes: lgRes?.data?.page?.translation
           }}
+          dataFilter={dataFilter}
         />
         <SearchButton lang={params.lang} />
-        {!isPopup && <PopupPromotion lang={params.lang} data={dataPopupVoucher?.data?.page?.translation} />}
+        {!isPopup && (
+          <PopupPromotion
+            lang={params.lang}
+            data={dataPopupVoucher?.data?.page?.translation}
+          />
+        )}
         {params.lang === 'en' && <ChatTawkto url={linkChatEn} />}
         {params.lang === 'fr' && <ChatTawkto url={linkChatFr} />}
         {params.lang === 'it' && <ChatTawkto url={linkChatIt} />}
@@ -121,6 +143,5 @@ export default async function MainLayout({ children, params }) {
         <Footer lang={params.lang} />
       </ApolloClientProvider>
     </ThemeRegistry>
-
   )
 }

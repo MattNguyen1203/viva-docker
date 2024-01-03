@@ -10,6 +10,10 @@ import Link from 'next/link'
 import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+
 const TripSlider = ({ dataSlide, lang }) => {
   let dataTrip = dataSlide?.concat(dataSlide)
 

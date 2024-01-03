@@ -11,6 +11,10 @@ import StaffItem from './StaffItem'
 import btnNext from '@/assets/images/about/arrowRight.png'
 import btnPrev from '@/assets/images/about/arrowLeft.png'
 
+import 'swiper/css'
+import 'swiper/css/grid'
+import 'swiper/css/navigation'
+
 export default function StaffSlide({ staffData = [] }) {
   const btnNextRef = useRef(null)
   const btnPrevRef = useRef(null)

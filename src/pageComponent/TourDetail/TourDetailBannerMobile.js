@@ -11,6 +11,8 @@ import ModalCustom from '@/components/Common/ModalCustom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
 
+import 'swiper/css'
+
 export default function TourDetailBannerMobile({ data = {}, price, lang }) {
   const { gallery, location, rate, video, title } = data
   const starIcons = new Array(Math.ceil(rate || 5)).fill(0)

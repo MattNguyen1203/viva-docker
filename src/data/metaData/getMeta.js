@@ -1,6 +1,6 @@
 export const getMeta = (title, excerpt, featuredImage) => {
   return {
-    metadataBase: new URL('http://localhost:3000'),
+    metadataBase: new URL('https://asiavivatravel.com'),
     title: title,
     description: excerpt,
     applicationName: process.env.SITE_NAME,
@@ -29,19 +29,6 @@ export const getMeta = (title, excerpt, featuredImage) => {
           alt: featuredImage?.node?.altText || featuredImage?.node?.title || 'twitter'
         }
       ]
-    },
-    robots: {
-      index: false,
-      follow: true,
-      nocache: true,
-      googleBot: {
-        index: true,
-        follow: false,
-        noimageindex: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1
-      }
     }
   }
 }
