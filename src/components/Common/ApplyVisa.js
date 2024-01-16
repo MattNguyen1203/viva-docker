@@ -20,6 +20,7 @@ import SelectField from '../FormBookTour/SelectField'
 import TextFiledWrapper from '../FormBookTour/TextField'
 import Button from './Button'
 import Notification from './Notification'
+import { TAG_EVENTS, sendTracking } from '@/helpers/google-tracking'
 
 // queries form
 const SUBMIT_FORM = gql`
@@ -140,6 +141,12 @@ function ApplyVisa({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
           setIsDone(true)
           resetForm()
         }
+      })
+      sendTracking({
+        event: TAG_EVENTS.VISA,
+        email: values.email,
+        phone_number: values.telephone,
+        event_source: lang
       })
     } else {
       setErrCapcha('Please verify!')

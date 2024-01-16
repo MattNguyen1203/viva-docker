@@ -21,6 +21,7 @@ import SelectField from '../FormBookTour/SelectField'
 import TextFiledWrapper from '../FormBookTour/TextField'
 import Button from './Button'
 import Notification from './Notification'
+import { TAG_EVENTS, sendTracking } from '@/helpers/google-tracking'
 // queries form
 const SUBMIT_FORM = gql`
   mutation ($input: SubmitGfFormInput!) {
@@ -37,8 +38,8 @@ const SUBMIT_FORM = gql`
 
 function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
   const [capcha, setCapcha] = useState(null)
-  const [errCapcha, setErrCapcha] = useState("")
-  const [open, setOpen] = useState(true);
+  const [errCapcha, setErrCapcha] = useState('')
+  const [open, setOpen] = useState(true)
   const [mutate, { loading }] = useMutation(SUBMIT_FORM)
   const [openNoti, setOpenNoti] = useState(false)
   const [msg, setMsg] = useState('')
@@ -51,24 +52,28 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
   const formRef = useRef()
   const pathName = usePathname()
 
-  let timeBookTourFuture = addYears(new Date(), 1);
+  let timeBookTourFuture = addYears(new Date(), 1)
 
   const handleClose = () => {
     // setOpen(false);
     setIsConfirm(true)
     setOpenNoti(true)
-  };
-  let arrValueStyle = ""
+  }
+  let arrValueStyle = ''
   let arrStyle = []
-  let arrValueCountry = ""
+  let arrValueCountry = ''
   let arrCountry = []
   let valueTrip = detail?.detail ? 0 : ''
   if (detail?.detail === true) {
-    detail?.styleTourArr?.forEach((item, index) => { arrStyle.push(item?.name) })
-    arrValueStyle = arrStyle.join(",")
+    detail?.styleTourArr?.forEach((item, index) => {
+      arrStyle.push(item?.name)
+    })
+    arrValueStyle = arrStyle.join(',')
 
-    detail?.countriesTourArr?.forEach((item, index) => { arrCountry.push(item?.name) })
-    arrValueCountry = arrCountry.join(", ")
+    detail?.countriesTourArr?.forEach((item, index) => {
+      arrCountry.push(item?.name)
+    })
+    arrValueCountry = arrCountry.join(', ')
   }
   // init value
   const INITAL_FORM_STATE = {
@@ -86,7 +91,7 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
     message: messageAbout,
     budget: '',
     confirm: false,
-    numberTrip: valueTrip,
+    numberTrip: valueTrip
   }
   //validate
   const FORM_VALIDATION = Yup.object().shape({
@@ -98,9 +103,17 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
       .min(9, dictionary?.message?.min_phone)
       .required(dictionary?.message?.is_required),
     email: Yup.string().email(dictionary?.message?.invalid_email).required(dictionary?.message?.is_required),
-    confirmEmail: Yup.string().oneOf([Yup.ref('email'), null], dictionary?.message?.is_match).required(dictionary?.message?.is_required),
-    numberAdult: Yup.number().typeError(dictionary?.message?.is_number).min(0).required(dictionary?.message?.is_required),
-    numberChildren: Yup.number().typeError(dictionary?.message?.is_number).min(0).required(dictionary?.message?.is_required),
+    confirmEmail: Yup.string()
+      .oneOf([Yup.ref('email'), null], dictionary?.message?.is_match)
+      .required(dictionary?.message?.is_required),
+    numberAdult: Yup.number()
+      .typeError(dictionary?.message?.is_number)
+      .min(0)
+      .required(dictionary?.message?.is_required),
+    numberChildren: Yup.number()
+      .typeError(dictionary?.message?.is_number)
+      .min(0)
+      .required(dictionary?.message?.is_required),
     date: Yup.date().required(dictionary?.message?.is_required),
     destination: Yup.array().min(1, dictionary?.message?.is_required).required(dictionary?.message?.is_required),
     accommodation: Yup.array().min(1, dictionary?.message?.is_required).required(dictionary?.message?.is_required),
@@ -110,7 +123,7 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
     confirm: Yup.boolean().required(dictionary?.message?.is_required),
     numberTrip: Yup.string()
       .matches(/^[0-9]+$/, dictionary?.message?.is_number)
-      .required(dictionary?.message?.is_required),
+      .required(dictionary?.message?.is_required)
   })
 
   const dataBooktour = data?.data?.page?.booktour
@@ -118,7 +131,8 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
   const dataBooktourAge = data?.data?.page?.booktour?.participantage
   const dataParticipant = data?.data?.page?.booktour?.participants
 
-  const { BOOK_TOUR_EN,
+  const {
+    BOOK_TOUR_EN,
     BOOK_TOUR_FR,
     BOOK_TOUR_IT,
     PERSONALIZE_EN,
@@ -126,12 +140,13 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
     PERSONALIZE_IT,
     PROMOTION_EN,
     PROMOTION_FR,
-    PROMOTION_IT } = FORM_IDS
+    PROMOTION_IT
+  } = FORM_IDS
 
-  let idForm = '';
-  if (lang === "en") {
+  let idForm = ''
+  if (lang === 'en') {
     idForm = !detail?.detail ? BOOK_TOUR_EN : pathName.includes('hot-deal') ? PROMOTION_EN : PERSONALIZE_EN
-  } else if (lang === "fr") {
+  } else if (lang === 'fr') {
     idForm = !detail?.detail ? BOOK_TOUR_FR : pathName.includes('hot-deal') ? PROMOTION_FR : PERSONALIZE_FR
   } else if (lang === 'it') {
     idForm = !detail?.detail ? BOOK_TOUR_IT : pathName.includes('hot-deal') ? PROMOTION_IT : PERSONALIZE_IT
@@ -151,7 +166,7 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
               { id: 1, value: values.nationality },
               { id: 3, value: values.fullName },
               { id: 17, value: values.telephone },
-              { id: 27, emailValues: { value: values.email, } },
+              { id: 27, emailValues: { value: values.email } },
               { id: 19, value: values.numberChildren },
               { id: 20, value: values.numberAdult },
               { id: 21, value: dateTravel },
@@ -162,7 +177,7 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
               { id: 15, value: values.budget },
               { id: 16, value: `${values.confirm}` === 'true' ? 'Yes' : 'No' },
               { id: 26, value: detail?.detail ? nameTour : '' },
-              { id: 28, value: !detail?.detail ? values.numberTrip : '' },
+              { id: 28, value: !detail?.detail ? values.numberTrip : '' }
             ]
           }
         }
@@ -183,6 +198,18 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
           resetForm()
         }
       })
+      sendTracking({
+        event: !!detail?.detail ? TAG_EVENTS.PERSON_TOUR : TAG_EVENTS.REQUEST_QUOTE,
+        email: values.email,
+        phone_number: values.telephone,
+        event_source: lang
+      })
+      console.log({
+        event: !!detail?.detail ? TAG_EVENTS.PERSON_TOUR : TAG_EVENTS.REQUEST_QUOTE,
+        email: values.email,
+        phone_number: values.telephone,
+        event_source: lang
+      });
     } else {
       setErrCapcha('Please verify!')
     }
@@ -198,23 +225,23 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
       <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+        aria-labelledby='alert-dialog-title'
+        aria-describedby='alert-dialog-description'
         sx={{
-          "& .MuiDialog-container": {
-            "& .MuiPaper-root": {
-              width: "100%",
-              maxWidth: "82.6875vw;",
+          '& .MuiDialog-container': {
+            '& .MuiPaper-root': {
+              width: '100%',
+              maxWidth: '82.6875vw;',
               margin: '0'
-            },
+            }
           },
-          "@media (max-width: 767px)": {
-            "& .MuiDialog-container .MuiPaper-root": {
-              maxWidth: "100%",
+          '@media (max-width: 767px)': {
+            '& .MuiDialog-container .MuiPaper-root': {
+              maxWidth: '100%',
               height: '100%',
               maxHeight: '100%'
-            },
-          },
+            }
+          }
         }}
       >
         <DialogContent>
@@ -273,7 +300,9 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
                       className='max-md:pb-[3vw]'
                     >
                       <div className='block md:pt-[3.28vw] md:mb-[3.5vw] mb-[10.67vw]'>
-                        <h2 className='text-white heading-1'>{detail?.detail ? dictionary?.nav?.title_personalize : dictionary?.nav?.title_quote}</h2>
+                        <h2 className='text-white heading-1'>
+                          {detail?.detail ? dictionary?.nav?.title_personalize : dictionary?.nav?.title_quote}
+                        </h2>
                         {/* Contact Detail */}
                         <div className='flex flex-col md:gap-[1.5vw] md:mt-[3.5vw] mt-[10.67vw]'>
                           <div className='flex items-center max-md:justify-between'>
@@ -335,13 +364,15 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
                                 placeholder={dataBooktourContact?.confirmemail?.placeholderconfirm}
                               />
                             </div>
-                            {!detail?.detail && <div className='flex flex-col md:gap-[0.5vw] inputField'>
-                              <h4>{dictionary?.check_visa?.number_trip}</h4>
-                              <TextFiledWrapper
-                                name='numberTrip'
-                                placeholder={'0'}
-                              />
-                            </div>}
+                            {!detail?.detail && (
+                              <div className='flex flex-col md:gap-[0.5vw] inputField'>
+                                <h4>{dictionary?.check_visa?.number_trip}</h4>
+                                <TextFiledWrapper
+                                  name='numberTrip'
+                                  placeholder={'0'}
+                                />
+                              </div>
+                            )}
                           </div>
                         </div>
 
@@ -414,12 +445,12 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
                                 <DatePicker
                                   name='date'
                                   views={['year', 'month']}
-                                  format="MM/yyyy"
+                                  format='MM/yyyy'
                                   value={formik.values.date}
-                                  onChange={(value) => formik.setFieldValue("date", value, true)}
+                                  onChange={(value) => formik.setFieldValue('date', value, true)}
                                   slotProps={{
                                     textField: {
-                                      variant: "outlined",
+                                      variant: 'outlined'
                                     }
                                   }}
                                   defaultValue={[new Date()]}
@@ -436,40 +467,45 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
 
                             {/* checkboxx */}
 
-                            {detail?.detail ? "" : (<div className='flex flex-col md:gap-[0.5vw] gap-[3.2vw] max-md:w-full'>
-                              <h4
-                                className='md:text-[1.125vw] text-[3.73333vw] text-[#fff] leading-[150%]'
-                                dangerouslySetInnerHTML={{ __html: `${dataParticipant?.destinationchoice}` }}
-                              ></h4>
-                              <div
-                                role='group'
-                                aria-labelledby='checkbox-group'
-                                className='grid grid-cols-2 grid-rows-2 md:gap-y-[1vw] md:gap-x-[1vw] gap-[4.27vw] items-center max-md:w-full '
-                              >
-                                {data?.data?.allCountries?.nodes?.map((des, index) => (
-                                  <label key={index}>
-                                    <Field
-                                      type='checkbox'
-                                      name='destination'
-                                      value={des?.name}
-                                    />
-                                    <span className='md:text-[1vw] text-white font-[500] leading-[150%] whitespace-nowrap'>
-                                      {des?.name}
-                                    </span>
-                                  </label>
-                                ))}
-                                <ErrorMessage
-                                  name='destination'
-                                  component='div'
-                                  className='md:text-[0.8vw] text-[3.2vw] text-[red]'
-                                />
+                            {detail?.detail ? (
+                              ''
+                            ) : (
+                              <div className='flex flex-col md:gap-[0.5vw] gap-[3.2vw] max-md:w-full'>
+                                <h4
+                                  className='md:text-[1.125vw] text-[3.73333vw] text-[#fff] leading-[150%]'
+                                  dangerouslySetInnerHTML={{ __html: `${dataParticipant?.destinationchoice}` }}
+                                ></h4>
+                                <div
+                                  role='group'
+                                  aria-labelledby='checkbox-group'
+                                  className='grid grid-cols-2 grid-rows-2 md:gap-y-[1vw] md:gap-x-[1vw] gap-[4.27vw] items-center max-md:w-full '
+                                >
+                                  {data?.data?.allCountries?.nodes?.map((des, index) => (
+                                    <label key={index}>
+                                      <Field
+                                        type='checkbox'
+                                        name='destination'
+                                        value={des?.name}
+                                      />
+                                      <span className='md:text-[1vw] text-white font-[500] leading-[150%] whitespace-nowrap'>
+                                        {des?.name}
+                                      </span>
+                                    </label>
+                                  ))}
+                                  <ErrorMessage
+                                    name='destination'
+                                    component='div'
+                                    className='md:text-[0.8vw] text-[3.2vw] text-[red]'
+                                  />
+                                </div>
                               </div>
-                            </div>)}
-
+                            )}
 
                             {/* radio group */}
                             <div className='flex flex-col md:gap-[0.5vw] gap-[3.2vw] max-md:w-full'>
-                              <h4 dangerouslySetInnerHTML={{ __html: `${dataParticipant?.accomodation?.labelaccom}` }}></h4>
+                              <h4
+                                dangerouslySetInnerHTML={{ __html: `${dataParticipant?.accomodation?.labelaccom}` }}
+                              ></h4>
                               <div
                                 role='group'
                                 aria-labelledby='checkbox-group'
@@ -482,7 +518,9 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
                                       name='accommodation'
                                       value={choice?.listchoice}
                                     />
-                                    <span className='md:text-[1rem] font-medium md:leading-[1.5]'>{choice?.listchoice}</span>
+                                    <span className='md:text-[1rem] font-medium md:leading-[1.5]'>
+                                      {choice?.listchoice}
+                                    </span>
                                   </label>
                                 ))}
                               </div>
@@ -498,33 +536,39 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
                         </div>
                         {/* trip,note,budget */}
                         <div className='md:mt-[3vw] mt-[6.4vw] md:grid grid-cols-3 md:gap-[5.31vw] items-start trip flex flex-col gap-[6.4vw]'>
-                          {detail?.detail === true ? "" : <div className='flex flex-col md:gap-[0.5vw] gap-[3.2vw] max-md:w-full'>
-                            <h4
-                              className=''
-                              dangerouslySetInnerHTML={{ __html: `${dataParticipant?.typeoftrip}` }}
-                            ></h4>
-                            <div
-                              role='group'
-                              aria-labelledby='checkbox-group'
-                              className='grid grid-cols-1 md:gap-[1vw] gap-[4.27vw] typeOfTrip 2xl:grid-cols-2'
-                            >
-                              {data?.data?.allTourStyle?.nodes?.map((tour, index) => (
-                                <label key={index}>
-                                  <Field
-                                    type='checkbox'
-                                    name='typeOfTrip'
-                                    value={tour?.name}
-                                  />
-                                  <span className='md:text-[1rem] font-medium md:leading-[1.5] whitespace-nowrap'>{tour?.name}</span>
-                                </label>
-                              ))}
-                              <ErrorMessage
-                                name='typeOfTrip'
-                                component='div'
-                                className='md:text-[0.8vw] text-[3.2vw] text-[red]'
-                              />
+                          {detail?.detail === true ? (
+                            ''
+                          ) : (
+                            <div className='flex flex-col md:gap-[0.5vw] gap-[3.2vw] max-md:w-full'>
+                              <h4
+                                className=''
+                                dangerouslySetInnerHTML={{ __html: `${dataParticipant?.typeoftrip}` }}
+                              ></h4>
+                              <div
+                                role='group'
+                                aria-labelledby='checkbox-group'
+                                className='grid grid-cols-1 md:gap-[1vw] gap-[4.27vw] typeOfTrip 2xl:grid-cols-2'
+                              >
+                                {data?.data?.allTourStyle?.nodes?.map((tour, index) => (
+                                  <label key={index}>
+                                    <Field
+                                      type='checkbox'
+                                      name='typeOfTrip'
+                                      value={tour?.name}
+                                    />
+                                    <span className='md:text-[1rem] font-medium md:leading-[1.5] whitespace-nowrap'>
+                                      {tour?.name}
+                                    </span>
+                                  </label>
+                                ))}
+                                <ErrorMessage
+                                  name='typeOfTrip'
+                                  component='div'
+                                  className='md:text-[0.8vw] text-[3.2vw] text-[red]'
+                                />
+                              </div>
                             </div>
-                          </div>}
+                          )}
 
                           {/* Budget */}
                           <div className='flex flex-col md:gap-[0.5vw] gap-[3.2vw] max-md:w-full budgetTour'>
@@ -546,7 +590,8 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
                               minRows={4}
                               name='message'
                               onChange={(e) => handleChangeMess(e)}
-                              placeholder={dataParticipant?.message?.placeholdermessage} />
+                              placeholder={dataParticipant?.message?.placeholdermessage}
+                            />
                           </div>
                         </div>
 
@@ -562,7 +607,7 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
                                 type='radio'
                                 name='confirm'
                                 value='true'
-                              // parse={(value) => value === 'true'}
+                                // parse={(value) => value === 'true'}
                               />{' '}
                               {dataParticipant?.ready?.confirm}
                             </label>
@@ -571,7 +616,7 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
                                 type='radio'
                                 name='confirm'
                                 value='false'
-                              // parse={(value) => value === 'true'}
+                                // parse={(value) => value === 'true'}
                               />{' '}
                               {dataParticipant?.ready?.refuse}
                             </label>
@@ -583,12 +628,15 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
                           />
                         </div>
                         <div className='mt-[2.5vw]'>
-                          <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPCHA_SITE_KEY} onChange={setCapcha} />
+                          <ReCAPTCHA
+                            sitekey={process.env.NEXT_PUBLIC_RECAPCHA_SITE_KEY}
+                            onChange={setCapcha}
+                          />
                           <p className='error-capcha md:text-[1rem] text-[3.2vw] text-[red]'>{errCapcha}</p>
                         </div>
                       </div>
                       <Button
-                        type="submit"
+                        type='submit'
                         disabled={loading}
                         className='justify-center btn-primary max-md:w-full max-md:flex'
                       >
@@ -603,7 +651,6 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
         </DialogContent>
         {/* Capcha */}
       </Dialog>
-
 
       <Notification
         lang={lang}
@@ -622,7 +669,6 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
         }}
         handleConfirm={() => {
           setOpenModal(false)
-
         }}
       />
     </div>
