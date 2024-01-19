@@ -76,7 +76,7 @@ export default function Notification(props) {
 
   const Success = () => {
     return (
-      <div className='bg-white w-full h-full md:py-[3vw] py-[5vw] md:px-[3.12vw] px-[5.5vw] flex flex-col items-center rounded-[1vw]'>
+      <div className='bg-white w-full h-fit md:py-[3vw] py-[5vw] md:px-[3.12vw] px-[5.5vw] flex flex-col items-center rounded-[1vw]'>
         <Image
           src={successIcon}
           alt='icon'
@@ -104,7 +104,7 @@ export default function Notification(props) {
 
   const Error = () => {
     return (
-      <div className='bg-white w-full h-full md:py-[3vw] py-[5vw] md:px-[3.12vw] px-[5.5vw] flex flex-col items-center rounded-[1vw]'>
+      <div className='bg-white w-full h-fit md:py-[3vw] py-[5vw] md:px-[3.12vw] px-[5.5vw] flex flex-col items-center rounded-[1vw]'>
         <Image
           src={errorIcon}
           alt='icon'
@@ -132,7 +132,7 @@ export default function Notification(props) {
 
   const Confirm = () => {
     return (
-      <div className='w-full h-full md:rounded-[1vw] rounded-[8px] !bg-white box-border'>
+      <div className='w-full h-fit md:rounded-[1vw] rounded-[8px] !bg-white box-border'>
         <div className='md:text-[2vw] text-[4.27vw] font-medium uppercase w-full md:px-[2.94vw] px-[3.5vw] md:py-[1.44vw] py-[2.5vw] bg-primaryColor md:rounded-t-[1vw] rounded-t-[8px]'>
         {notification?.confirm?.text1}
         </div>

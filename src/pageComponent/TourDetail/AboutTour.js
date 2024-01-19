@@ -684,6 +684,7 @@ export default function AboutTour(props) {
         >
           <div className='w-full h-full overflow-y-auto md:rounded-[16px] overflow-x-hidden'>
             <BookTour
+              type={type === 'promo' ? "tour-promotion" : undefined}
               detail={{ detail: true, styleTourArr, countriesTourArr }}
               nameTour={data?.banner?.title}
               data={dataBookTour}

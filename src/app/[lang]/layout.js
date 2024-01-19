@@ -2,6 +2,7 @@ import React from 'react'
 import './globals.css'
 import { i18n } from '../../../i18n-config'
 import Script from 'next/script'
+import { GoogleTagManager } from '@next/third-parties/google'
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }))
@@ -29,6 +30,7 @@ const RootLayout = async ({ children, params }) => {
         />
       </head> */}
       <body suppressHydrationWarning={true}>{children}</body>
+      <GoogleTagManager gtmId="GTM-KCQVVQPW" />
       <Script
         id='google-script'
         strategy='lazyOnload'

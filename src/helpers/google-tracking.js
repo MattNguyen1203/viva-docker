@@ -14,4 +14,6 @@ export const TAG_EVENTS = {
   REQUEST_QUOTE: "request-a-quote",
   PERSON_TOUR: "personalize-this-tour",
   VISA: "visa",
+  VOUCHER: "voucher",
+  TOUR_PROMOTION: "tour-promotion",
 }

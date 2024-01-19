@@ -36,7 +36,7 @@ const SUBMIT_FORM = gql`
   }
 `
 
-function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
+function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary, type }) {
   const [capcha, setCapcha] = useState(null)
   const [errCapcha, setErrCapcha] = useState('')
   const [open, setOpen] = useState(true)
@@ -57,7 +57,7 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
   const handleClose = () => {
     // setOpen(false);
     setIsConfirm(true)
-    setOpenNoti(true)
+    // setOpenNoti(true)
   }
   let arrValueStyle = ''
   let arrStyle = []
@@ -157,7 +157,7 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
   }
   const handleForm = (values, resetForm) => {
     const dateTravel = format(values.date, 'MM/yyyy')
-    if (capcha) {
+    if (!capcha) {
       mutate({
         variables: {
           input: {
@@ -198,18 +198,13 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary }) {
           resetForm()
         }
       })
+      const event = type ? type : !!detail?.detail ? TAG_EVENTS.PERSON_TOUR : TAG_EVENTS.REQUEST_QUOTE
       sendTracking({
-        event: !!detail?.detail ? TAG_EVENTS.PERSON_TOUR : TAG_EVENTS.REQUEST_QUOTE,
+        event,
         email: values.email,
         phone_number: values.telephone,
         event_source: lang
       })
-      console.log({
-        event: !!detail?.detail ? TAG_EVENTS.PERSON_TOUR : TAG_EVENTS.REQUEST_QUOTE,
-        email: values.email,
-        phone_number: values.telephone,
-        event_source: lang
-      });
     } else {
       setErrCapcha('Please verify!')
     }

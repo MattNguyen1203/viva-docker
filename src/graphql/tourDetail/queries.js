@@ -55,7 +55,7 @@ export const GET_TOUR_DETAIL = `query GetTourDetail($slug: ID!, $language: Langu
                 placeName
                 image {
                   altText
-                  sourceUrl(size: THUMBNAIL)
+                  sourceUrl
                 }
               }
               icons {

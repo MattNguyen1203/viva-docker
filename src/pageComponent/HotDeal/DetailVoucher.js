@@ -13,6 +13,7 @@ import { FORM_IDS } from '@/configs/global-config'
 import logo from '@/assets/images/VIVA-LOGO-02.png'
 import SelectField from '@/components/FormBookTour/SelectField'
 import { ErrorMessage } from 'formik'
+import { TAG_EVENTS, sendTracking } from '@/helpers/google-tracking'
 
 // css for label + placeholder + error msg
 const labelStyle =
@@ -137,6 +138,12 @@ const DetailVocher = ({ headerData = {}, data, lang, dictionary, dataCountry }) 
           date: ''
         })
       }
+    })
+    sendTracking({
+      event: TAG_EVENTS.VOUCHER,
+      email: data.email,
+      phone_number: data.phone,
+      event_source: lang
     })
   }
   const expireDate = data?.content?.expireDate.slice(0, data?.content?.expireDate?.indexOf(' '))
