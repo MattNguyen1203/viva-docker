@@ -157,7 +157,7 @@ function BookTour({ data, setOpenModal, lang, detail, nameTour, dictionary, type
   }
   const handleForm = (values, resetForm) => {
     const dateTravel = format(values.date, 'MM/yyyy')
-    if (!capcha) {
+    if (capcha) {
       mutate({
         variables: {
           input: {
