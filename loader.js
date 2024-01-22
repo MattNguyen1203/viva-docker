@@ -1,5 +1,9 @@
 const isProd = process.env.NODE_ENV === 'production'
 
+// export default function customImageLoader({ src, width, quality }) {
+//   return `/api/image?url=${src}&w=${width}&q=${quality || 75}`;
+// }
+
 export default function myImageLoader({ src, width, quality }) {
   // Run development
   return `${src}?w=${width}&q=${quality || 75}`
