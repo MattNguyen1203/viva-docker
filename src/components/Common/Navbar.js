@@ -207,7 +207,7 @@ export default function Navbar({
             }`}
         >
           <div className='flex items-center gap-x-[2vw]'>
-            <Link href={`/${lang}`}>
+            <Link href={`/${lang}`} prefetch={false}>
               <Image
                 src={logo}
                 width={100}
@@ -252,6 +252,7 @@ export default function Navbar({
                 href={`/${lang}/hot-deals`}
                 className='capitalize text-[1vw] nav-link cursor-pointer relative'
                 menu={dataHome?.nav3}
+                prefetch={false}
                 // onClick={handleCloseMenu}
               >
                 <span>{dataHome?.nav3}</span>
@@ -263,6 +264,7 @@ export default function Navbar({
                 href={`/${lang}/check-visa`}
                 className='capitalize text-[1vw] nav-link '
                 menu={dataHome?.nav4}
+                prefetch={false}
               >
                 <span>{dataHome?.nav4}</span>
               </Link>
@@ -296,6 +298,7 @@ export default function Navbar({
                 href={`/${lang}/blog`}
                 className='capitalize text-[1vw] nav-link cursor-pointer'
                 menu={dataHome?.nav7}
+                prefetch={false}
               >
                 <span>{dataHome?.nav7}</span>
               </Link>
@@ -370,6 +373,7 @@ export default function Navbar({
         <Link
           href={`/${lang}/search`}
           className='flex items-center gap-[1.6vw] w-[50%] bg-[#fff] justify-center'
+          prefetch={false}
         >
           <Image
             src={planeF}

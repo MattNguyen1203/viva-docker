@@ -7,6 +7,7 @@ function AboutItem({ data, slug, onCloseMenu, lang }) {
       href={`/${lang}/${slug}`}
       className='relative w-[26.25vw] h-fit ourTour_menu rounded-[0.625vw]'
       onClick={onCloseMenu}
+      prefetch={false}
     >
       <Image
         src={data?.backgroundMenu?.sourceUrl || data?.image?.sourceUrl}

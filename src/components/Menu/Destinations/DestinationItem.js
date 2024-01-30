@@ -8,6 +8,7 @@ function DestinationItem({ tour, lang, onCloseMenu }) {
       href={`/${lang}/destinations/${encodeURIComponent(tour?.slug)}`}
       className='h-[16vw] relative ourTour_menu rounded-[0.625vw]'
       onClick={onCloseMenu}
+      prefetch={false}
     >
       <div className='bgImg-MenuOurTour  absolute z-[1] rounded-[0.625vw]'></div>
       {tour?.country?.thumb?.sourceUrl ? (

@@ -55,7 +55,10 @@ function MenuMb({
     <div className='menu-mobile pb-[41.33vw]'>
       <div className='flex items-center justify-center h-[14.93vw] border-b border-solid border-textColor border-opacity-20'>
         <div className='flex items-center content'>
-          <Link href={`/`}>
+          <Link
+            href={`/`}
+            prefetch={false}
+          >
             <Image
               src={logo}
               width={100}
@@ -66,7 +69,10 @@ function MenuMb({
             />
           </Link>
           <div className='flex-1 hidden max-lg:block'>
-            <InputSearchMb lang={lang} dataFilter={dataFilter} />
+            <InputSearchMb
+              lang={lang}
+              dataFilter={dataFilter}
+            />
           </div>
           <div
             className='cursor-pointer close'
@@ -138,6 +144,7 @@ function MenuMb({
                   key={index}
                   className='flex flex-col items-center justify-center flex-shrink-0'
                   onClick={onCloseMenu}
+                  prefetch={false}
                 >
                   <Image
                     src={tour?.country?.flag?.sourceUrl}
@@ -186,6 +193,7 @@ function MenuMb({
                   href={`/${lang}/types-of-trips/${item?.slug}`}
                   className='flex flex-col items-center'
                   onClick={onCloseMenu}
+                  prefetch={false}
                 >
                   <div className='w-[17.3vw] h-[17.3vw] rounded-full border border-solid border-primaryColor flex items-center justify-center bg-[#FFFBE9]'>
                     <Image
@@ -213,6 +221,7 @@ function MenuMb({
               <Link
                 href={`/${lang}/hot-deals`}
                 onClick={onCloseMenu}
+                prefetch={false}
               >
                 {dataHome?.nav3}
               </Link>
@@ -262,6 +271,7 @@ function MenuMb({
             href={`/${lang}/check-visa`}
             className='text-[5.33vw] opacity-60 capitalize leading-[1.2]'
             onClick={onCloseMenu}
+            prefetch={false}
           >
             {dataHome?.nav4}
           </Link>
@@ -298,6 +308,7 @@ function MenuMb({
               href={`/${lang}/about-us/${titleAboutUs?.whoWeAreSlug}`}
               className='text-[3.667vw] text-textColor opacity-70 uppercase'
               onClick={onCloseMenu}
+              prefetch={false}
             >
               {titleAboutUs?.whoWeAre}
             </Link>
@@ -305,6 +316,7 @@ function MenuMb({
               href={`/${lang}/about-us/${titleAboutUs?.ResTravelSlug}`}
               className='text-[3.667vw] text-textColor opacity-70 uppercase'
               onClick={onCloseMenu}
+              prefetch={false}
             >
               {titleAboutUs?.ResTravel}
             </Link>
@@ -312,6 +324,7 @@ function MenuMb({
               href={`/${lang}/about-us/${titleAboutUs?.AboutUsSlug}`}
               className='text-[3.667vw] text-textColor opacity-70 uppercase'
               onClick={onCloseMenu}
+              prefetch={false}
             >
               {titleAboutUs?.AboutUs}
             </Link>
@@ -320,6 +333,7 @@ function MenuMb({
               href={`/${lang}/about-us/${titleAboutUs?.legacySlug}`}
               className='text-[3.667vw] text-textColor opacity-70 uppercase'
               onClick={onCloseMenu}
+              prefetch={false}
             >
               {titleAboutUs?.legacy}
             </Link>
@@ -331,6 +345,7 @@ function MenuMb({
             href={`/${lang}/blog`}
             className='text-[5.33vw] opacity-60 capitalize leading-[1.2]'
             onClick={onCloseMenu}
+            prefetch={false}
           >
             {dataHome?.nav7}
           </Link>
@@ -348,6 +363,7 @@ function MenuMb({
           <Link
             href={socialMobile?.data?.page?.translation?.home?.footer?.column1?.linkFb ?? ''}
             className='max-md:w-[9.6vw] md:w-[6vw] md:h-[6vw] max-md:h-[9.6vw] rounded-full flex items-center justify-center border border-solid border-[#000] fb'
+            prefetch={false}
           >
             <Image
               src={fbIcon}
@@ -361,6 +377,7 @@ function MenuMb({
           <Link
             href={socialMobile?.data?.page?.translation?.home?.footer?.column1?.linkLinked ?? ''}
             className='max-md:w-[9.6vw] max-md:h-[9.6vw] md:w-[6vw] md:h-[6vw] rounded-full flex items-center justify-center border border-solid border-[#000] linked'
+            prefetch={false}
           >
             <Image
               src={linkedIcon}
@@ -373,6 +390,7 @@ function MenuMb({
           <Link
             href={socialMobile?.data?.page?.translation?.home?.footer?.column1?.linkInstargram ?? ''}
             className='max-md:w-[9.6vw] max-md:h-[9.6vw] md:w-[6vw] md:h-[6vw] rounded-full flex items-center justify-center border border-solid border-[#000] instar'
+            prefetch={false}
           >
             <Image
               src={instarIcon}
@@ -385,6 +403,7 @@ function MenuMb({
           <Link
             href={socialMobile?.data?.page?.translation?.home?.footer?.column1?.linkYoutube ?? ''}
             className='max-md:w-[9.6vw]  md:w-[6vw] md:h-[6vw] max-md:h-[9.6vw] rounded-full flex items-center justify-center border border-solid border-[#000] ytb'
+            prefetch={false}
           >
             <Image
               src={ytbIcon}
