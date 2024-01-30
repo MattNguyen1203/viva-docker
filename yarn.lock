@@ -81,6 +81,11 @@
     "@babel/helper-validator-identifier" "^7.22.5"
     to-fast-properties "^2.0.0"
 
+"@builder.io/partytown@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@builder.io/partytown/-/partytown-0.9.0.tgz#f58cb62591f238fa1ba41087132558b53b9dc41d"
+  integrity sha512-kWMcSKBFeymAbumz+pWEYKgdI1JOD6QdkZRi16/ANuCqq2nZ6xZZvXOxWxodN71gBbY+6O31dRd2bMfZNLESJw==
+
 "@emotion/babel-plugin@^11.11.0":
   version "11.11.0"
   resolved "https://registry.npmjs.org/@emotion/babel-plugin/-/babel-plugin-11.11.0.tgz"
@@ -2549,7 +2554,7 @@ next-usequerystate@^1.12.0:
   dependencies:
     mitt "^3.0.1"
 
-next@13.5:
+next@13.5.6:
   version "13.5.6"
   resolved "https://registry.yarnpkg.com/next/-/next-13.5.6.tgz#e964b5853272236c37ce0dd2c68302973cf010b1"
   integrity sha512-Y2wTcTbO4WwEsVb4A8VSnOsG1I9ok+h74q0ZdxkwM3EODqrs4pasq7O0iUxbcS9VtWMicG7f3+HAj0r1+NtKSw==
