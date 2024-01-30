@@ -51,6 +51,7 @@
     "yup": "^1.3.2"
   },
   "devDependencies": {
+    "@builder.io/partytown": "^0.9.0",
     "encoding": "^0.1.13"
   }
 }

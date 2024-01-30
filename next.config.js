@@ -31,6 +31,9 @@ const nextConfig = {
   //   loaderFile: './loader.js'
   // },
   staticPageGenerationTimeout: 1000,
+  experimental: {
+    nextScriptWorkers: true
+  }
   // output: 'standalone',
 }
 
