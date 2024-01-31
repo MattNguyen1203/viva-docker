@@ -319,6 +319,62 @@ query GetPromotionTour($language: LanguageCodeFilterEnum!, $offset: Int!, $size:
 }
 `
 
+export const DATA_BEST_TOUR_HOME_PAGE_TEST = `
+query GetFilterTour(
+  $language: LanguageCodeFilterEnum!
+  $bestSellerSlug: [String!]
+) {
+  allTours(
+    first: 7,
+    where: {
+      taxQuery: {
+        taxArray: [
+          { taxonomy: BESTSELLER, operator: IN, terms: $bestSellerSlug, field: SLUG }
+        ]
+      }
+      orderby: { field: DATE, order: DESC }
+      language: $language
+    }
+  ) {
+    pageInfo {
+      offsetPagination {
+        total
+      }
+    }
+    nodes {
+      id
+        title
+        slug
+        bestSeller {
+          nodes {
+            name
+          }
+        }
+        tourStyle {
+          nodes {
+            slug
+          }
+        }
+        tourDetail {
+          priceTour
+          numberDay
+          banner {
+            title
+            gallery {
+              sourceUrl(size: MEDIUM_LARGE)
+              altText
+              title
+            }
+            location
+            rate
+            icons
+          }
+        }
+    }
+  }
+}
+`
+
 const DATA_BEST_TOUR_HOME_PAGE = gql`
 query GetFilterTour(
   $language: LanguageCodeEnum!
