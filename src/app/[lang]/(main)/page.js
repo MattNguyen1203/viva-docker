@@ -140,7 +140,7 @@ export default async function page({ params, searchParams }) {
             fill
             className='absolute w-full h-auto object-cover top-0 z-[-1] hidden md:block'
           />
-          {/* <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div>Loading...</div>}>
             <BestTour
               finalData={finalData}
               button={button}
@@ -148,13 +148,13 @@ export default async function page({ params, searchParams }) {
               dataFilter={dataFilter}
               lang={lang}
             />
-          </Suspense> */}
+          </Suspense>
 
-          <BestSellerTour
+          {/* <BestSellerTour
             button={button}
             dictionary={dictionary}
             lang={lang}
-          />
+          /> */}
           <TravelStyle
             data={travelStyleList?.travelStyleList}
             title={travelStyleList?.title}
