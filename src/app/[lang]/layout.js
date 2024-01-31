@@ -23,12 +23,16 @@ export const metadata = {
 const RootLayout = async ({ children, params }) => {
   return (
     <html lang={params.lang}>
-      {/* <head>
-        <meta
-          name='google-site-verification'
-          content='3Aim5tZRr39Pzh_cf54NCK_Rgx80kLtJp_ggnUkeL3Q'
-        />
-      </head> */}
+      <head>
+        <meta http-equiv="x-dns-prefetch-control" content="on" />
+        <link rel="dns-prefetch" href="//www.googletagmanager.com/" />
+        <link rel="dns-prefetch" href="//d2czpmgoouh0j8.cloudfront.net/" />
+        <link rel="dns-prefetch" href="//api.asiavivatravel.com/" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com/" />
+        <link rel="dns-prefetch" href="//embed.tawk.to/" />
+        <link rel="dns-prefetch" href="//va.tawk.to/" />
+        <link rel="dns-prefetch" href="//www.google-analytics.com" />
+      </head>
       <body suppressHydrationWarning={true}>
         <noscript>
           <iframe
