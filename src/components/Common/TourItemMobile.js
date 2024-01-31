@@ -48,6 +48,7 @@ function TourItemMobile({ data, lang, loading }) {
               width={300}
               height={300}
               className='h-[100%] w-[100%] object-cover rounded-[1.067vw]'
+              loading='lazy'
             />
             {bestTour ? (
               <span className='absolute top-3 left-3 tag-best_tour text-[2.667vw] w-max px-2 py-1 text-[#2b2b2b] bg-primaryColor block'>

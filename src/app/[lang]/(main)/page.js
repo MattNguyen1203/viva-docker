@@ -32,7 +32,7 @@ import TravelStyleMb from '@/pageComponent/Home/TravelStyle/TravelStyleMb'
 import { Suspense } from 'react'
 import bgBeach from '@/assets/images/bg-beach.jpg'
 import Image from 'next/image'
-
+import BestSellerTour from '@/pageComponent/Home/BestSellerTour'
 
 export async function generateMetadata({ params: { lang } }) {
   const res = await fetchData(GET_META_DATA, {
@@ -72,7 +72,11 @@ export default async function page({ params, searchParams }) {
 
   const categorySlug = arrayCateInit.filter((item, index) => item !== 'blog')
 
-  const res = await fetchData(isMobile ? GET_DATA_iNSEPECT_MOBILE : GET_DATA_iNSEPECT, { language, categorySlug, destinationSlug: arrayDesInit })
+  const res = await fetchData(isMobile ? GET_DATA_iNSEPECT_MOBILE : GET_DATA_iNSEPECT, {
+    language,
+    categorySlug,
+    destinationSlug: arrayDesInit
+  })
 
   const finalData = data?.data?.page?.home
 
@@ -146,6 +150,11 @@ export default async function page({ params, searchParams }) {
             />
           </Suspense>
 
+          {/* <BestSellerTour
+            button={button}
+            dictionary={dictionary}
+            lang={lang}
+          /> */}
           <TravelStyle
             data={travelStyleList?.travelStyleList}
             title={travelStyleList?.title}

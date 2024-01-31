@@ -58,7 +58,6 @@ async function Banner({ data, lang, dataFilter }) {
         quality={85}
         alt={data?.background?.altText || data?.background?.title || 'banner'}
         priority
-        loading='eager'
         className='absolute inset-0 object-cover w-full h-full bg-blend-multiply'
       />
       <div className='overlay-banner max-md:hidden'></div>
