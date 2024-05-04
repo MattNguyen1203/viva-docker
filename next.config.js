@@ -39,8 +39,8 @@ const nextConfig = {
   staticPageGenerationTimeout: 1000,
   experimental: {
     nextScriptWorkers: true
-  }
-  // output: 'standalone',
+  },
+  output: 'standalone'
 }
 
 // const withBundleAnalyzer = require('@next/bundle-analyzer')({
