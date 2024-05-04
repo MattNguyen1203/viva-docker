@@ -3,7 +3,7 @@ version: '3'
 services:
   next-app:
     container_name: viva
-    image: ngotheson/viva:latest
+    image: okhubvn/viva:latest
     build:
       context: .
       dockerfile: Dockerfile
@@ -20,12 +20,12 @@ services:
     ports:
       - 3001:3000
     networks:
-      - asivivatravel
+      - asiavivatravel
 
   # Add more containers below (nginx, postgres, etc.)
 
 # Define a network, which allows containers to communicate
 # with each other, by using their container name as a hostname
 networks:
-  asivivatravel:
+  asiavivatravel:
     external: true
